@@ -12,7 +12,7 @@
                             <i class="icon-menu-button"></i>
                         </div>
                         <ul>
-                            <li><a href='#'>首页</a>
+                            <li><a href='#'>首頁</a>
                             </li>
                             <li><a href='#'>Feature</a>
                                 <ul>
@@ -26,17 +26,17 @@
                                     <li><a href="blog-map-post.html">Map Post</a></li>
                                 </ul>
                             </li>
-                            <li><a href='#'>Categories </a></li>
+                            <li><a href='#'>歸檔 </a></li>
                             <li><a href='#'>Pages</a></li>
-                            <li><a href='#'>关于我</a></li>
+                            <li><a href='#'>關於我</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
             <div class="login-register">
-                <span><a>登录</a></span>
+                <span><a>登陸</a></span>
                 <span >❤️</span>
-                <span><a>注册</a></span>
+                <span><a>注冊</a></span>
             </div>
             <div class="logo">
                 <a href="#">☽</a>

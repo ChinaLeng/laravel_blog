@@ -31,7 +31,7 @@
                     <div class="carousel-caption">
                         <div class="slider-post">
                             <div class="slider-heading" data-animation="animated fadeInUp">
-                                <h1>Running through the busy road</h1>
+                                <h1>@yield('purpose','Running through the busy road')</h1>
                             </div>
                         </div>
                     </div>

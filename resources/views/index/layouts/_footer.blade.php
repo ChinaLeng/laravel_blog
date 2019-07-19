@@ -5,21 +5,17 @@
             <div class="container">
                 <div class="row row-pb-md">
                     <div class="col-md-3">
-                        <h3>Navigational</h3>
+                        <h3>聯係我</h3>
                         <p>
-                            <ul class="colorlib-footer-links">
-                                <li><a href="#"><i class="icon-check"></i> Home</a></li>
-                                <li><a href="#"><i class="icon-check"></i> About Me</a></li>
-                                <li><a href="#"><i class="icon-check"></i> Blog</a></li>
-                                <li><a href="#"><i class="icon-check"></i> Travel</a></li>
-                                <li><a href="#"><i class="icon-check"></i> Lifestyle</a></li>
-                                <li><a href="#"><i class="icon-check"></i> Fashion</a></li>
-                                <li><a href="#"><i class="icon-check"></i> Health</a></li>
+                            <ul class="colorlib-footer-links" style="color: #222">
+                                <li>微信:woaini3900098(很二)</li>
+                                <li>QQ:893579684</li>
+                                <li>Email:kuan9531@skyczk.cn</li>
                             </ul>
                         </p>
                     </div>
                     <div class="col-md-3">
-                        <h3>分类</h3>
+                        <h3>分類</h3>
                         <p>
                             <ul class="colorlib-footer-links">
                                 <li><a href="#">February 2018</a></li>
@@ -32,7 +28,7 @@
                         </p>
                     </div>
                     <div class="col-md-3">
-                        <h3>标签</h3>
+                        <h3>標簽</h3>
                         <p class="tags">
                             <span><a href="#"><i class="icon-tag"></i> Modeling</a></span>
                             <span><a href="#"><i class="icon-tag"></i> Fashion</a></span>
