@@ -12,5 +12,5 @@
 */
 
 Route::get('/', function () {
-    return view('index.contact.index');
+    return view('admin.layouts.app');
 });
