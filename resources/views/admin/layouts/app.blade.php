@@ -33,75 +33,13 @@
         <div id="wrapper">
 
             <!-- Top Bar Start -->
-            <div class="topbar">
-
-                <!-- LOGO -->
-                <div class="topbar-left">
-                    <div class="text-center">
-                        <a href="" class="logo"><i class="icon-magnet icon-c-logo"></i><span>Lara后台管理</span></a>
-                    </div>
-                </div>
-
-                <!-- Button mobile view to collapse sidebar menu -->
-                <div class="navbar navbar-default" role="navigation">
-                    <div class="container">
-                        <div class="">
-                            <div class="pull-left">
-                                <button class="button-menu-mobile open-left">
-                                    <i class="ion-navicon"></i>
-                                </button>
-                                <span class="clearfix"></span>
-                            </div>
-
-                            <form role="search" class="navbar-left app-search pull-left hidden-xs">
-			                     <input type="text" placeholder="Search..." class="form-control">
-			                     <a href=""><i class="fa fa-search"></i></a>
-			                </form>
-
-                            <ul class="nav navbar-nav navbar-right pull-right">
-                                <li class="hidden-xs">
-                                    <a href="" class="waves-effect waves-light">111</a>
-                                </li>
-
-                                <li class="dropdown">
-                                    <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="" alt="user-img" class="img-circle"> </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href=""><i class="ti-user m-r-5"></i> 我的资料</a></li>
-                                        <li><a href=""><i class="ti-settings m-r-5"></i> 修改密码</a></li>
-                                        <li><a href=""><i class="ti-power-off m-r-5"></i> 退出登录</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <!--/.nav-collapse -->
-                    </div>
-                </div>
-            </div>
+            @include('admin.layouts._header')
             <!-- Top Bar End -->
 
 
             <!-- ========== Left Sidebar Start ========== -->
 
-            <div class="left side-menu">
-                <div class="sidebar-inner slimscrollleft">
-                    <!--- Divider -->
-                    <div id="sidebar-menu">
-                        <ul>
-                            <li class="has_sub">
-                                <a href="javascript:void(0)" class="waves-effect "><i class="ti-home"></i> <span> 控制台 </span> </a>
-                                <ul class="list-unstyled">
-                                    <li class=""><a href="">仪表盘</a></li>
-                                    <li class=""><a href=""> 我的资料 </a></li>
-                                    <li class=""><a href=""> 修改密码 </a></li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
+            @include('admin.layouts._menu')
             <!-- Left Sidebar End -->
 
             <!-- ============================================================== -->
