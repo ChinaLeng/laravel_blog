@@ -14,7 +14,8 @@
                 <li class="has_sub">
                     <a href="javascript:void(0)" class="waves-effect"><i class="ti-paint-bucket"></i> <span> 管理 </span> </a>
                     <ul class="list-unstyled">
-                        <li class=""><a href="">文章</a></li>
+                        <li class=""><a href="{{ route('admins.article.index') }}">文章</a></li>
+                        <li class=""><a href="{{ route('admins.tag.index') }}">标签</a></li>
                     </ul>
                 </li>
             </ul>

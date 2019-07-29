@@ -23,6 +23,7 @@ class CreateSocialUsersTable extends Migration
             $table->string('last_login_ip', 16)->default('')->comment('最后登录ip');
             $table->string('email')->default('')->comment('邮箱');
             $table->boolean('is_admin')->default(0)->comment('是否是admin');
+            $table->boolean('is_speak')->default(1)->comment('是否允许评论 1是 0否');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
