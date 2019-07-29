@@ -15,4 +15,4 @@ Route::get('/', function () {
     return view('admin.index.index');
 });
 Route::get('login/github', 'Auth\ThirdLoginController@redirectToProvider');
-Route::get('login/git/callback', 'Auth\ThirdLoginController@handleProviderCallback');
+Route::get('login/git/callback/{service}', 'Auth\ThirdLoginController@handleProviderCallback');

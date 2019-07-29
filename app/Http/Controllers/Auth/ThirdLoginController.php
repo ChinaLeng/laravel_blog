@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Socialite;
+use Illuminate\Http\Request;
 
 class ThirdLoginController extends Controller
 {
@@ -21,10 +22,10 @@ class ThirdLoginController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback()
+    public function handleProviderCallback(Request $request,$service)
     {
         $user = Socialite::driver('github')->user();
-
+var_dump($service);
         dd($user);
     }
 }
