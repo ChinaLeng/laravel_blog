@@ -22,7 +22,7 @@ class ThirdLoginController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback(Request $request,$service)
+    public function handleProviderCallback()
     {
         $user = Socialite::driver('github')->user();
         dd($user);
