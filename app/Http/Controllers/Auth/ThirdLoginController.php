@@ -25,7 +25,6 @@ class ThirdLoginController extends Controller
     public function handleProviderCallback(Request $request,$service)
     {
         $user = Socialite::driver('github')->user();
-var_dump($service);
         dd($user);
     }
 }
