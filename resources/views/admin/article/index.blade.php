@@ -42,11 +42,12 @@
 					<tr>
 						<th>ID</th>
 						<th>名称</th>
-						<th >作者</th>
+						<th>作者</th>
 						<th>关键词</th>
 						<th>评论数</th>
 						<th>查看数</th>
 						<th>置顶</th>
+						<th>评论</th>
 						<th class="text-center">操作</th>
 					</tr>
 				</thead>
@@ -56,15 +57,16 @@
 					@foreach($list as $val)
 					<tr>
 						<td>{{ $val->id }}</td>
-						<td>{{ $val->name }}</td>
+						<td>{{ $val->title }}</td>
 						<td>{{ $val->author }}</td>
 						<td>{{ $val->keywords }}</td>
 						<td>{{ $val->reply_count }}</td>
 						<td>{{ $val->view_count }}</td>
 						<td><span class="label label-table {{ $val->is_top == 1 ? 'label-default' : 'label-warning' }}">{{ $val->is_top == 1 ? '置顶' : '未置顶' }}</span></td>
+						<td><span class="label label-table {{ $val->is_reply == 1 ? 'label-default' : 'label-warning' }}">{{ $val->is_reply == 1 ? '开启' : '关闭' }}</span></td>
 						<td>
-							<a href="{{ route('admins.tag.edit',$val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5">编辑</a>
-							<a href="{{ route('admins.tag.del',$val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5">删除</i></a>
+							<a href="{{ route('admins.article.edit',$val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5">编辑</a>
+							<a href="{{ route('admins.article.del',$val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5">删除</i></a>
 						</td>
 					</tr>
 					@endforeach
