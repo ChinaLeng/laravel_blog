@@ -7,6 +7,7 @@ use Socialite;
 use Illuminate\Http\Request;
 use App\Models\SocialUser;
 use URL;
+use Auth;
 
 class ThirdLoginController extends Controller
 {
@@ -65,6 +66,9 @@ class ThirdLoginController extends Controller
             ]);
             $user_id = $userUp->id;
         }
+        Auth::guard('social')->loginUsingId($user_id, false);
+        // 如果session没有存储登录前的页面;则直接返回到首页
+        return redirect(url('/'));
 
     }
 }

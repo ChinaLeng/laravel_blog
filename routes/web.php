@@ -46,5 +46,5 @@ Route::namespace('Admin')->prefix('admins')->group(function(){
 		Route::get('/del/{article}', 'ArticleController@del')->name('admins.article.del');
 	});
 });
-/*Route::get('login/github', 'Auth\ThirdLoginController@redirectToProvider');
-Route::get('login/git/callback', 'Auth\ThirdLoginController@handleProviderCallback');*/
+Route::get('login/github', 'Auth\ThirdLoginController@redirectToProvider');
+Route::get('login/git/callback', 'Auth\ThirdLoginController@handleProviderCallback');
