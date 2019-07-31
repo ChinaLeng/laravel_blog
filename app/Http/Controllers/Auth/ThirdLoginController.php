@@ -19,10 +19,10 @@ class ThirdLoginController extends Controller
     public function redirectToProvider()
     {
         // 记录登录前的url
-        $data = [
+/*        $data = [
             'targetUrl' => URL::previous(),
         ];
-        session($data);
+        session($data);*/
         return Socialite::driver('github')->redirect();
     }
         /**
