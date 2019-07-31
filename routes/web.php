@@ -46,5 +46,11 @@ Route::namespace('Admin')->prefix('admins')->group(function(){
 		Route::get('/del/{article}', 'ArticleController@del')->name('admins.article.del');
 	});
 });
-Route::get('login/github', 'Auth\ThirdLoginController@redirectToProvider');
-Route::get('login/git/callback', 'Auth\ThirdLoginController@handleProviderCallback');
+//第三方登录
+Route::namespace('Auth')->prefix('auth')->group(function(){
+	//重定向
+	Route::get('/login/github', 'ThirdLoginController@redirectToProvider');
+	//登录
+	Route::get('/login/git/callback', 'ThirdLoginController@handleProviderCallback');
+});
+
