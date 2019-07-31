@@ -36,6 +36,8 @@ class ArticleController extends BaseController
 			'is_top'     => $request->post('is_top'),
 			'view_count' => $request->post('view_count'),
 			'is_reply'   => $request->post('is_reply'),
+			'user_id'    => $this->getUserId(),
+			'author'     => $this->getUserName(),
 		];
 		$article = Article::create($data);
 		//添加标签

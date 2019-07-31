@@ -66,7 +66,7 @@ class ThirdLoginController extends Controller
             ]);
             $user_id = $userUp->id;
         }
-        Auth::guard('social')->loginUsingId($user_id, false);
+        Auth::guard('social')->loginUsingId($user_id, true);
         // 如果session没有存储登录前的页面;则直接返回到首页
         return redirect(url('/'));
 

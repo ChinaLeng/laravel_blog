@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel{{ Auth::guard('social')->check()?1:2 }}
+                    Laravel
                 </div>
 
                 <div class="links">

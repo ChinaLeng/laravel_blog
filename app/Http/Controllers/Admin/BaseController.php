@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Handlers\ImageUploadHandler;//图片上传类
+use Auth;
 
 class BaseController extends Controller
 {
@@ -30,5 +31,13 @@ class BaseController extends Controller
         	];
 		}
 		return json_encode($data);
+	}
+	public function getUserId()
+	{
+		return Auth::guard('social')->id();
+	}
+	public function getUserName()
+	{
+		return Auth::guard('social')->name();
 	}
 }
