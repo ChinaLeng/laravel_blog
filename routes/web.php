@@ -10,11 +10,15 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
+});*/
+//前台
+Route::namespace('Index')->group(function(){
+	Route::get('/','IndexController@index');
 });
 //后台
-Route::namespace('Admin')->prefix('admins')->group(function(){
+Route::namespace('Admin')->prefix('admins')->middleware('auth.login')->group(function(){
 	//后台首页
 	Route::get('/', 'IndexController@index')->name('admins.home');
 	//图片上传

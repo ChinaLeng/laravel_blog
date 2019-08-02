@@ -16,4 +16,8 @@ class SocialUser extends Model implements AuthenticatableContract, AuthorizableC
     protected $fillable = [
         'socialite_client_id','name','avatar','openid','access_token','last_login_ip','email','is_admin','is_speak'
     ];
+    public function article()
+    {
+        return $this->hasMany('App\Models\Article','user_id','id');
+    }
 }

@@ -14,4 +14,8 @@ class Article extends Model
     {
         return $this->hasOne('App\Models\ArticleTag','article_id');
     }
+    public function user()
+    {
+        return $this->belongsTo('App\Models\SocialUser','user_id','id');
+    }
 }
