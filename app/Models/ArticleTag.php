@@ -10,4 +10,8 @@ class ArticleTag extends Model
     protected $fillable = [
         'article_id','tag_id'
     ];
+    public function article()
+    {
+        return $this->hasOne('App\Models\Article');
+    }
 }

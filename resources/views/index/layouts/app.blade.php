@@ -3,8 +3,9 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Easy Blog</title>
-    <meta name="description" content="">
+    <title>@yield('title',config('kuan.head.title'))</title>
+    <meta name="description" content="@yield('description',config('kuan.head.description'))">
+    <meta name="keywords" content="@yield('keywords',config('kuan.head.keywords'))">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- ================= Favicon ================== -->
@@ -31,7 +32,7 @@
                     <div class="carousel-caption">
                         <div class="slider-post">
                             <div class="slider-heading" data-animation="animated fadeInUp">
-                                <h1>@yield('purpose','Running through the busy road')</h1>
+                                <h1>@yield('purpose',config('kuan.introduce'))</h1>
                             </div>
                         </div>
                     </div>

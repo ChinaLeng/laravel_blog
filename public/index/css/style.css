@@ -1530,7 +1530,7 @@ p {
   background: #fff;
 }
 
-.pagination a {
+/*.pagination a {
   width: 34px;
   height: 34px;
   display: inline-block;
@@ -1540,7 +1540,7 @@ p {
   margin-right: 5px;
   border-radius: 100%;
   font-weight: 700;
-}
+}*/
 
 .pagination a:hover {
   color: #000000;
@@ -1855,7 +1855,7 @@ p {
 **   Blue Primary Color
 -------------------------------------*/
 .blue-primary-color a:hover, .blue-primary-color a:focus {
-  color: #fff;
+  color: #222;
 }
 
 .blue-primary-color .base-color {

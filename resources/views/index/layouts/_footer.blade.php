@@ -8,9 +8,9 @@
                         <h3>聯係我</h3>
                         <p>
                             <ul class="colorlib-footer-links" style="color: #222">
-                                <li>微信:woaini3900098(很二)</li>
-                                <li>QQ:893579684</li>
-                                <li>Email:kuan9531@skyczk.cn</li>
+                                <li>微信:{{config('kuan.wx')}}</li>
+                                <li>QQ:{{config('kuan.qq')}}</li>
+                                <li>Email:{{config('kuan.admin_email')}}</li>
                             </ul>
                         </p>
                     </div>
@@ -52,14 +52,21 @@
                         </p>
                     </div>
                 </div>
-<!--                 <div class="row">
-                    <div class="col-md-12">
-                        <p>
-                            <small class="block">
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></small> 
-                            <small class="block">Demo Images: <a href="http://unsplash.co/" target="_blank">Unsplash</a></small>
-                        </p>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="copyright-area">
+                                <p>联系邮箱:{{config('kuan.admin_email')}}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="footer-right text-right">
+                                <p>TCP 备案:{{config('kuan.tcp')}}</p>
+                            </div>
+                        </div>
                     </div>
-                </div> -->
+                </div>
+            </div>
             </div>
     </footer>

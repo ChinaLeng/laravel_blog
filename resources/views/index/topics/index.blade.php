@@ -1,5 +1,8 @@
 @extends('index.layouts.app')
-@section('purpose','Feel the beauty inside you')
+@section('title',$article->title)
+@section('description',$article->title)
+@section('keywords',$article->keywords)
+@section('purpose',$article->title)
 @section('content')
 <div class="container">
     <div class="row">
@@ -9,31 +12,13 @@
                     <div class="heading">
                         <!-- <h2>Feel the beauty inside you</h2> -->
                         <div class="meta-info">
-                            <span>By <a href="#">Admin</a></span>
-                            <span>In News</span>
-                            <span>Comment 2</span>
+                            <span>作者<a href="#">{{ $article->user->name }}</a></span>
+                            <span>发布于</span>
+                            <span>{{ $article->created_at->diffForHumans() }}</span>
                         </div>
                     </div>
                     <div class="blog-detail-text">
-                        <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by th
-                        charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound a
-                        ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying the
-                        ough shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our pow
-                        er of choice is untrammelled and when nothing prevents our being able to do what we like best, every pleasu welcomed
-                        and every pain avoided. But in certain circumstances and owing to the claims of duty or the obligations a will frequently
-                        occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these ma
-                        tters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains avoid</p>
-                        <div class="blog-detail-quote">
-                            <div class="icon base-color">
-                                <i class="icon-quotes"></i>
-                            </div>
-                            <blockquote>
-                                On the other hand, we denounce with righteous indigo charms of pleasure of the moment, so blinded by des ensue and equal blame belong
-                            </blockquote>
-                            <div class="clear"></div>
-                        </div>
-                        <p>occur that pleasures have to be repudiated and annoyances accepted. The wise man therefore always holds in these ma tters to this principle of selection: he rejects pleasures to secure other greater pleasures, or else he endures pains avoid </p>
-                        <p>On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by th charms of pleasure of the moment, so blinded by desire, that they cannot foresee the pain and trouble that are bound a ensue; and equal blame belongs to those who fail in their duty through weakness of will, which is the same as saying the ough shrinking from toil and pain. These cases are perfectly simple and easy to distinguish. In a free hour, when our pow er of choice is untrammelled and when nothing prevent</p>
+                        {!! $article->content !!}
                         <div class="row">
                             <div class="col-xs-6">
                                 <div class="social-sharing-icon">
@@ -47,14 +32,15 @@
                                 <div class="tag-list-container">
                                     <span>Tags:  </span>
                                     <div class="tag-list">
-                                        <a href="#" class="base-color">News</a>
-                                        <a href="#" class="base-color">Book</a>
+                                        @foreach($article->getTag($article->articletag->tag_id) as $k => $v)
+                                        <a href="{{ $v->id }}" class="base-color">{{ $v->name }}</a>
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="author-information">
+<!--                     <div class="author-information">
                         <div class="vertical-image-text">
                             <div class="image">
                                 <img src="images/author1.jpg" class="img-responsive img-circle"  alt="author">
@@ -69,7 +55,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <div class="blog-post-comment-box">
                         <div class="heading"><h3><span class="base-color">5</span> Comments</h3></div>
                         <div class="all-comments">

@@ -16,6 +16,8 @@
 //前台
 Route::namespace('Index')->group(function(){
 	Route::get('/','IndexController@index');
+	Route::get('/about','IndexController@about')->name('index.about');
+	Route::get('/topics/{id}/{slug?}','IndexController@topics')->name('index.topics');
 });
 //后台
 Route::namespace('Admin')->prefix('admins')->middleware('auth.login')->group(function(){

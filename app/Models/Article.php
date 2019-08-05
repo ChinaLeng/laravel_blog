@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Tag;
 
 class Article extends Model
 {
@@ -17,5 +18,10 @@ class Article extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\SocialUser','user_id','id');
+    }
+    public function getTag($ids)
+    {
+        $list = Tag::whereIn('id',explode(',', $ids))->get();
+        return $list;
     }
 }

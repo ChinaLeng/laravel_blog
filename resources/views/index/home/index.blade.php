@@ -7,7 +7,7 @@
             <div class="blog-layout-one blog-item1">
                 <div class="overlay"></div>
                 <div class="text">
-                    <h3><a href="#">{{ $v->title }}</a></h3>
+                    <h3><a href="{{ route('index.topics',['id'=>$v->id,'slug'=>$v->slug]) }}">{{ $v->title }}</a></h3>
                     <div class="meta-info">
                         <span>作者<a href="#">{{ $v->user->name }}</a></span>
                         <span>发布<a href="#">于</a></span>
@@ -21,8 +21,12 @@
             @endforeach
         </div>
     </div>
-    {!! $article->appends(Request::except('page'))->render() !!}
     <div class="row">
+        <div class="col-md-12">
+            {!! $article->links() !!}
+        </div>
+    </div>
+<!--     <div class="row">
         <div class="col-md-12">
             <div class="pagination">
                 <a href="#">1</a>
@@ -31,6 +35,6 @@
                 <a href="#"><i class="fa fa-angle-right"></i></a>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 @endsection

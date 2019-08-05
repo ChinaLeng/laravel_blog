@@ -28,7 +28,7 @@
                             </li>
                             <li><a href='#'>歸檔 </a></li>
                             <li><a href='#'>Pages</a></li>
-                            <li><a href='#'>關於我</a></li>
+                            <li><a href="{{ route('index.about') }}">關於我</a></li>
                         </ul>
                     </nav>
                 </div>
