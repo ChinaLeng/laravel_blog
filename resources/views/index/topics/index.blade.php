@@ -104,10 +104,9 @@
                         </div>
                         <div class="blog-post-leave-comment">
                             <div class="heading">
-                                <h3>Post Comment</h3>
+                                <h3>提交评论</h3>
                             </div>
                             <div class="leave-comment-box">
-                                <form action="#">
                                     <div class="name-email-website-field">
                                         <div class="form-group">
                                             <input type="text" placeholder="Name" class="form-control" />
@@ -122,8 +121,7 @@
                                     <div class="form-group">
                                         <textarea class="form-control" placeholder="Comment" rows="8" cols="80"></textarea>
                                     </div>
-                                    <input type="submit" class="easy-button-two active" value="SUBMIT"/>
-                                </form>
+                                    <input type="submit" class="easy-button-two active" value="提交" aid="{{ $article->id }}" pid='0'/>
                             </div>
                         </div>
                     </div>
@@ -133,4 +131,18 @@
     </div>
 
 </div>
+@endsection
+@section('script')
+<script type="text/javascript">
+    $(function () {
+        $('.blog-post-leave-comment').on('click', '.active', function () {
+            var obj=$(this);
+            $.get("{{ route('index.checklogin') }}", function(data) {
+                if(data.status === 1){
+                    
+                }
+            })
+        })
+    })
+</script>
 @endsection

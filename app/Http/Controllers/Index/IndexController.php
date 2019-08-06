@@ -22,4 +22,11 @@ class IndexController extends BaseController
 		//dd(Article::with(['articletag'])->find($id)->articletag->tag_id);
 		return view('index.topics.index',compact('article'));
 	}
+	public function checkLogin()
+	{
+		return response()->json([
+            'status' => (int)auth()->guard('social')->check(),
+        ]);
+		
+	}
 }
