@@ -69,7 +69,7 @@
                                         <p>On the other hand, we denounce with righteous</p>
                                     </div>
                                     <div class="replay">
-                                        <a href="#" class="easy-button button-small">REPLY</a>
+                                        <a href="#" class="easy-button button-small">回复</a>
                                     </div>
                                 </div>
                                 <div class="replay-comment single-comment">
@@ -82,11 +82,11 @@
                                             <p>On the other hand, we denounce with righteous</p>
                                         </div>
                                         <div class="replay">
-                                            <a href="#" class="easy-button button-small">REPLY</a>
+                                            <a href="#" class="easy-button button-small">回复</a>
                                         </div>
                                     </div>
-                                </div><!--/.single-comment-->
-                            </div><!--/.single-comment-->
+                                </div>
+                            </div>
                             <div class="single-comment">
                                 <div class="vertical-image-text">
                                     <div class="image">
@@ -97,10 +97,10 @@
                                         <p>On the other hand, we denounce with righteous</p>
                                     </div>
                                     <div class="replay">
-                                        <a href="#" class="easy-button button-small">REPLY</a>
+                                        <a href="#" class="easy-button button-small">回复</a>
                                     </div>
                                 </div>
-                            </div><!--/.single-comment-->
+                            </div>
                         </div>
                         <div class="blog-post-leave-comment">
                             <div class="heading">
@@ -108,18 +108,18 @@
                             </div>
                             <div class="leave-comment-box">
                                     <div class="name-email-website-field">
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <input type="text" placeholder="Name" class="form-control" />
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
-                                            <input type="email" placeholder="Email" class="form-control" />
+                                            <input type="email" id="email" placeholder="邮箱,可不填写" style="width: 40%;" class="form-control" />
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <input type="url" placeholder="Website" class="form-control" />
-                                        </div>
+                                        </div> -->
                                     </div>
                                     <div class="form-group">
-                                        <textarea class="form-control" placeholder="Comment" rows="8" cols="80"></textarea>
+                                        <textarea class="form-control" id="content" placeholder="评论内容" rows="8" cols="80"></textarea>
                                     </div>
                                     <input type="submit" class="easy-button-two active" value="提交" aid="{{ $article->id }}" pid='0'/>
                             </div>
@@ -138,8 +138,30 @@
         $('.blog-post-leave-comment').on('click', '.active', function () {
             var obj=$(this);
             $.get("{{ route('index.checklogin') }}", function(data) {
-                if(data.status === 1){
-                    
+                if(data.status === 0){
+                    var content = $('#content').val();
+                    var aid     = $(obj).attr('aid'),
+                        pid     = $(obj).attr('pid'),
+                        email   = $('#email').val(),
+                        postData={
+                            "article_id":aid,
+                            "pid":pid,
+                            'content':content,
+                            'email':email,
+                            '_token':'{{csrf_token()}}'
+                        };
+                        $.ajax({
+                            type: 'POST',
+                            url: "{{ route('index.comment') }}",
+                            data: postData,
+                            dataType: "json",
+                            success:function(data){
+                                console.log(data);
+                            },
+                            error:function(jqXHR){
+                                  console.log(jqXHR);  
+                            }
+                        })
                 }
             })
         })

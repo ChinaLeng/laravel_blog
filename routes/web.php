@@ -19,6 +19,7 @@ Route::namespace('Index')->group(function(){
 	Route::get('/about','IndexController@about')->name('index.about');
 	Route::get('/topics/{id}/{slug?}','IndexController@topics')->name('index.topics');
 	Route::get('/checklogin','IndexController@checkLogin')->name('index.checklogin');
+	Route::post('/comment','IndexController@comment')->name('index.comment');
 });
 //后台
 Route::namespace('Admin')->prefix('admins')->middleware('auth.login')->group(function(){
