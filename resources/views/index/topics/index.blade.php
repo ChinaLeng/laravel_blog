@@ -57,66 +57,51 @@
                         </div>
                     </div> -->
                     <div class="blog-post-comment-box">
-                        <div class="heading"><h3><span class="base-color">5</span> Comments</h3></div>
+                        <div class="heading"><h3><span class="base-color">{{ count($comment) }}</span>条评论</h3></div>
                         <div class="all-comments">
+                            @foreach($comment as $k => $v)
                             <div class="single-comment">
                                 <div class="vertical-image-text">
                                     <div class="image">
-                                        <img src="images/author1.jpg" alt="author1.jpg" class="img-circle">
+                                        <img src="{{ $v['avatar'] }}" alt="author1.jpg" class="img-circle">
                                     </div>
                                     <div class="text">
-                                        <div class="name-date"><h4>Julia Fox</h4><span>April 22, 2917</span></div>
-                                        <p>On the other hand, we denounce with righteous</p>
+                                        <div class="name-date"><h5>{{ $v['name'] }}</h5><span>{{ $v['created_at'] }}</span></div>
+                                        <p>{!! $v['content'] !!}</p>
                                     </div>
                                     <div class="replay">
-                                        <a href="#" class="easy-button button-small">回复</a>
+                                        <a href="#comment-box" id="{{ $v['id'] }}" name="{{ $v['name'] }}" class="easy-button button-small">回复</a>
                                     </div>
                                 </div>
+                                @foreach($v['child'] as $x => $y)
                                 <div class="replay-comment single-comment">
                                     <div class="vertical-image-text">
                                         <div class="image">
-                                            <img src="images/author1.jpg" alt="author1.jpg" class="img-circle">
+                                            <img src="{{ $y['avatar'] }}" alt="author1.jpg" class="img-circle">
                                         </div>
                                         <div class="text">
-                                            <div class="name-date"><h4>Julia Fox</h4><span>April 22, 2917</span></div>
-                                            <p>On the other hand, we denounce with righteous</p>
+                                            <div class="name-date"><h5>{{ $y['name'] }}<span style="font-size: 12px;color: #828282;padding: 0 6px;">回复</span>{{ $y['reply_name'] }}</h5><span>{{ $y['created_at'] }}</span></div>
+                                            <p>{!! $y['content'] !!}</p>
                                         </div>
                                         <div class="replay">
-                                            <a href="#" class="easy-button button-small">回复</a>
+                                            <a href="#comment-box" id="{{ $y['id'] }}" name="{{ $y['name'] }}" class="easy-button button-small">回复</a>
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
-                            <div class="single-comment">
-                                <div class="vertical-image-text">
-                                    <div class="image">
-                                        <img src="images/author1.jpg" alt="author1.jpg" class="img-circle">
-                                    </div>
-                                    <div class="text">
-                                        <div class="name-date"><h4>Julia Fox</h4><span>April 22, 2917</span></div>
-                                        <p>On the other hand, we denounce with righteous</p>
-                                    </div>
-                                    <div class="replay">
-                                        <a href="#" class="easy-button button-small">回复</a>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
+                        @if($article->is_reply == 1)
                         <div class="blog-post-leave-comment">
                             <div class="heading">
                                 <h3>提交评论</h3>
                             </div>
-                            <div class="leave-comment-box">
+                            <div class="leave-comment-box" id="comment-box">
                                     <div class="name-email-website-field">
-                                        <!-- <div class="form-group">
-                                            <input type="text" placeholder="Name" class="form-control" />
-                                        </div> -->
                                         <div class="form-group">
                                             <input type="email" id="email" placeholder="邮箱,可不填写" style="width: 40%;" class="form-control" />
                                         </div>
-                                        <!-- <div class="form-group">
-                                            <input type="url" placeholder="Website" class="form-control" />
-                                        </div> -->
                                     </div>
                                     <div class="form-group">
                                         <textarea class="form-control" id="content" placeholder="评论内容" rows="8" cols="80"></textarea>
@@ -124,6 +109,7 @@
                                     <input type="submit" class="easy-button-two active" value="提交" aid="{{ $article->id }}" pid='0'/>
                             </div>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -135,6 +121,7 @@
 @section('script')
 <script type="text/javascript">
     $(function () {
+        //发表评论
         $('.blog-post-leave-comment').on('click', '.active', function () {
             var obj=$(this);
             $.get("{{ route('index.checklogin') }}", function(data) {
@@ -156,7 +143,7 @@
                             data: postData,
                             dataType: "json",
                             success:function(data){
-                                console.log(data);
+                                window.location.reload()
                             },
                             error:function(jqXHR){
                                   console.log(jqXHR);  
@@ -164,7 +151,15 @@
                         })
                 }
             })
-        })
+        });
+        //回复评论
+        $('.single-comment').on('click','.button-small',function(){
+            var obj=$(this);
+            var pid= $(obj).attr('id'),
+                name= $(obj).attr('name');
+            $('#content').attr('placeholder','@'+name);
+            $('.blog-post-leave-comment .active').attr('pid',pid);
+        });
     })
 </script>
 @endsection

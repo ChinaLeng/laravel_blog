@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Tag;
+use DB;
 
 class Article extends Model
 {
@@ -23,5 +24,10 @@ class Article extends Model
     {
         $list = Tag::whereIn('id',explode(',', $ids))->get();
         return $list;
+    }
+    public static function getFile()
+    {
+        $files = Article::select(DB::raw('YEAR(created_at) as pub_date'))->groupBy('pub_date')->orderBy('pub_date', 'desc')->get()->toArray();
+        return $files;
     }
 }

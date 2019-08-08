@@ -12,7 +12,7 @@
                             <i class="icon-menu-button"></i>
                         </div>
                         <ul>
-                            <li><a href='#'>首頁</a>
+                            <li><a href="/">首頁</a>
                             </li>
                             <li><a href='#'>Feature</a>
                                 <ul>
@@ -27,8 +27,8 @@
                                 </ul>
                             </li>
                             <li><a href='#'>歸檔 </a></li>
-                            <li><a href='#'>Pages</a></li>
                             <li><a href="{{ route('index.about') }}">關於我</a></li>
+                            <li><a href='https://github.com/ChinaLeng'>GitHub</a></li>
                         </ul>
                     </nav>
                 </div>

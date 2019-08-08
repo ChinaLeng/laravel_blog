@@ -15,15 +15,12 @@
                         </p>
                     </div>
                     <div class="col-md-3">
-                        <h3>分類</h3>
+                        <h3>归档</h3>
                         <p>
                             <ul class="colorlib-footer-links">
-                                <li><a href="#">February 2018</a></li>
-                                <li><a href="#">January 2018</a></li>
-                                <li><a href="#">December 2017</a></li>
-                                <li><a href="#">November 2017</a></li>
-                                <li><a href="#">October 2017</a></li>
-                                <li><a href="#">September 2017</a></li>
+                                @foreach(\App\Models\Article::getFile() as $k => $v)
+                                <li><a href="#">{{ $v->pub_date }}</a></li>
+                                @endforeach
                             </ul>
                         </p>
                     </div>

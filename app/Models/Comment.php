@@ -46,7 +46,7 @@ class Comment extends Model
                 });
                 foreach ($child as $m => $n) {
                     // 获取被评论人id
-                    $replyUserId = $this->where('id', $n['pid'])->pluck('socialite_client_id');
+                    $replyUserId = $this->where('id', $n['pid'])->pluck('social_users_id');
                     // 获取被评论人昵称
                     $socialiteUserMap = [
                         'id' => $replyUserId,
