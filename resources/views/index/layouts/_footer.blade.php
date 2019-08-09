@@ -15,11 +15,11 @@
                         </p>
                     </div>
                     <div class="col-md-3">
-                        <h3>归档</h3>
+                        <h3>歸檔</h3>
                         <p>
                             <ul class="colorlib-footer-links">
                                 @foreach(\App\Models\Article::getFile() as $k => $v)
-                                <li><a href="#">{{ $v->pub_date }}</a></li>
+                                <li><a href="#">{{ $v['pub_date'] }}</a></li>
                                 @endforeach
                             </ul>
                         </p>

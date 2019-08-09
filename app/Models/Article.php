@@ -30,4 +30,15 @@ class Article extends Model
         $files = Article::select(DB::raw('YEAR(created_at) as pub_date'))->groupBy('pub_date')->orderBy('pub_date', 'desc')->get()->toArray();
         return $files;
     }
+    public static function getAllArticle()
+    {
+        $files = Article::select('title','id','created_at','slug',DB::raw('YEAR(created_at) as pub_date'))->orderBy('pub_date', 'desc')->get()->toArray();
+        $data = [];
+        foreach ($files as $key => $value) {
+            $v = ['id'=>$value['id'],'title'=>$value['title'],'created_at'=>$value['created_at'],'slug'=>$value['slug']];
+            $data[$files[$key]['pub_date']][] = $v;
+            // $data[$files[$key]['pub_date']]['cr_time'] = $value['created_at'];
+        };
+        return $data;
+    }
 }

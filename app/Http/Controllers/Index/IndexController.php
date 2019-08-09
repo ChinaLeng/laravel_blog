@@ -12,7 +12,6 @@ class IndexController extends BaseController
 {
 	public function index()
 	{
-		dd(Article::getFile());
 		$article = Article::with('user')->orderBy('created_at','desc')->simplePaginate(3);
 		return view('index.home.index',compact('article'));
 	}
@@ -63,5 +62,11 @@ class IndexController extends BaseController
         	return response()->json(['code'=>500,'msg'=>'服务器错误'], 500);
         }
         return response()->json(['code'=>200,'msg'=>'评论成功'], 200);
+	}
+	public function file()
+	{
+		$file = Article::getAllArticle();
+		// dd($file);
+		return view('index.file.index',compact('file'));
 	}
 }
