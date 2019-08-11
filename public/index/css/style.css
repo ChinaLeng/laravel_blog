@@ -1648,7 +1648,7 @@ p {
 .single-comment {
   width: 100%;
   border-top: 1px solid rgba(164, 181, 224, 0.17);
-  padding: 27px 0;
+  padding: 15px 0;
 }
 
 .single-comment .image {

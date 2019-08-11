@@ -21,6 +21,7 @@ Route::namespace('Index')->group(function(){
 	Route::get('/checklogin','IndexController@checkLogin')->name('index.checklogin');
 	Route::post('/comment','IndexController@comment')->name('index.comment');
 	Route::get('/file','IndexController@file')->name('index.file');
+	Route::post('/message','IndexController@message')->name('index.message');
 });
 //后台
 Route::namespace('Admin')->prefix('admins')->middleware('auth.login')->group(function(){

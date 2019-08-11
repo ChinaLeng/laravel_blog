@@ -1,5 +1,5 @@
 @extends('index.layouts.app')
-@section('purpose','去什么地方不重要,重要的是沿途的风景和一直陪在你身边的人')
+@section('purpose',config('kuan.introduce'))
 @section('content')
 <div class="container white-bg pr">
     <div class="row">
@@ -9,21 +9,30 @@
                     <div class="heading">
                         <h3>留言</h3>
                     </div>
+                    @foreach(['success', 'warning', 'info', 'danger'] as $msg)
+                        @if(session()->has($msg))
+                            <div class="alert alert-success" style="color: #222;background-color: rgba(0,0,0,.02);border-color: rgba(0,0,0,.02);">
+                                 {{ session()->get($msg) }}
+                            </div>
+                        @endif
+                    @endforeach
                     <div class="leave-comment-box" id="hui">
-                        <form action="#">
+                        <form action="{{ route('index.message') }}" method="post">
+                            {{ csrf_field() }}
                             <div class="name-email-website-field">
                                 <div class="form-group">
-                                    <input type="text" placeholder="姓名" class="form-control" />
+                                    <input type="text" name="name" value="{{ cache('name') }}" required placeholder="姓名" class="form-control" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" placeholder="郵箱" class="form-control" />
+                                    <input type="email" name="email" value="{{ cache('email') }}" placeholder="郵箱,可不写" class="form-control" />
                                 </div>
                                 <div class="form-group">
-                                    <input type="url" placeholder="你的網站鏈接" class="form-control" />
+                                    <input type="url" name="url" placeholder="你的網站鏈接,可不写" class="form-control" />
                                 </div>
                             </div>
+                            <input type="hidden" name="pid" id='pid' value="0">
                             <div class="form-group">
-                                <textarea class="form-control" placeholder="内容" rows="8" cols="80"></textarea>
+                                <textarea class="form-control" id="content" required name="content" placeholder="内容" rows="8" cols="80"></textarea>
                             </div>
                             <input type="submit" class="easy-button-two active" value="提交"/>
                         </form>
@@ -54,50 +63,40 @@
             <div class="blog-detail pdb80 white-bg" style="padding-top: 0;">
                 <div class="inner" style="max-width: 100%;">
                 	<div class="blog-post-comment-box" style="margin-top: 0;">
-                        <div class="heading"><h3>共<span class="base-color">5</span>条留言</h3></div>
+                        <div class="heading"><h3>共<span class="base-color">{{ count($message) }}</span>条留言</h3></div>
                         <div class="all-comments">
+                            @foreach($message as $k => $v)
                             <div class="single-comment">
                                 <div class="vertical-image-text">
-<!--                                     <div class="image">
-                                        <img src="images/author1.jpg" alt="author1.jpg" class="img-circle">
-                                    </div> -->
+                                    <div class="image">
+                                        <img src="/index/author1.jpg" alt="author1.jpg" class="img-circle">
+                                    </div>
                                     <div class="text">
-                                        <div class="name-date"><h4>Julia Fox</h4><span>April 22, 2917</span></div>
-                                        <p>On the other hand, we denounce with righteous</p>
+                                        <div class="name-date"><h5>{{ $v['name'] }}</h5><span>{{ $v['created_at'] }}</span></div>
+                                        <p>{!! $v['content'] !!}</p>
                                     </div>
                                     <div class="replay">
-                                        <a href="#hui" class="easy-button button-small">回復</a>
+                                        <a href="#hui" id="{{ $v['id'] }}" name="{{ $v['name'] }}" class="easy-button button-small">回复</a>
                                     </div>
                                 </div>
+                                @foreach($v['child'] as $x => $y)
                                 <div class="replay-comment single-comment">
                                     <div class="vertical-image-text">
-<!--                                         <div class="image">
-                                            <img src="images/author1.jpg" alt="author1.jpg" class="img-circle">
-                                        </div> -->
+                                        <div class="image">
+                                            <img src="/index/author1.jpg" alt="author1.jpg" class="img-circle">
+                                        </div>
                                         <div class="text">
-                                            <div class="name-date"><h4>Julia Fox</h4><span>April 22, 2917</span></div>
-                                            <p>On the other hand, we denounce with righteous</p>
+                                            <div class="name-date"><h5>{{ $y['name'] }}<span style="font-size: 12px;color: #828282;padding: 0 6px;">回复</span>{{ $y['reply_name'] }}</h5><span>{{ $y['created_at'] }}</span></div>
+                                            <p>{!! $y['content'] !!}</p>
                                         </div>
                                         <div class="replay">
-                                            <a href="#hui" class="easy-button button-small">回復</a>
+                                            <a href="#hui" id="{{ $y['id'] }}" name="{{ $y['name'] }}" class="easy-button button-small">回复</a>
                                         </div>
                                     </div>
-                                </div><!--/.single-comment-->
-                            </div><!--/.single-comment-->
-                            <div class="single-comment">
-                                <div class="vertical-image-text">
-<!--                                     <div class="image">
-                                        <img src="images/author1.jpg" alt="author1.jpg" class="img-circle">
-                                    </div> -->
-                                    <div class="text">
-                                        <div class="name-date"><h4>Julia Fox</h4><span>April 22, 2917</span></div>
-                                        <p>On the other hand, we denounce with righteous</p>
-                                    </div>
-                                    <div class="replay">
-                                        <a href="#hui" class="easy-button button-small">回復</a>
-                                    </div>
                                 </div>
-                            </div><!--/.single-comment-->
+                                @endforeach
+                            </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -106,4 +105,18 @@
 
     </div>
 </div>
+@endsection
+@section('script')
+<script type="text/javascript">
+    $(function () {
+        //回复评论
+        $('.single-comment').on('click','.button-small',function(){
+            var obj=$(this);
+            var pid= $(obj).attr('id'),
+                name= $(obj).attr('name');
+            $('#content').attr('placeholder','@'+name);
+            $('#pid').val(pid);
+        });
+    })
+</script>
 @endsection
