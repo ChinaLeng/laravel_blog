@@ -22,6 +22,8 @@ Route::namespace('Index')->group(function(){
 	Route::post('/comment','IndexController@comment')->name('index.comment');
 	Route::get('/file','IndexController@file')->name('index.file');
 	Route::post('/message','IndexController@message')->name('index.message');
+	Route::any('/wechat', 'WeChatController@serve');
+	Route::any('/callback', 'WeChatController@callback');
 });
 //后台
 Route::namespace('Admin')->prefix('admins')->middleware('auth.login')->group(function(){
