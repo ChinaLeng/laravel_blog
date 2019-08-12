@@ -53,5 +53,10 @@ return [
         'client_secret' => env('GITHUB_CLIENT_SECRET'), // Your GitHub Client Secret
         'redirect' => 'http://blog.czkup.cn/login/git/callback',
     ],
+    'weibo' => [
+        'client_id' => env('WEIBO_KEY'),
+        'client_secret' => env('WEIBO_SECRET'),
+        'redirect' => 'http://blog.czkup.cn/auth/login/weibo/callback'
+    ],
 
 ];
