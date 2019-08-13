@@ -64,9 +64,12 @@ Route::namespace('Auth')->prefix('auth')->group(function(){
 	Route::get('/login/github', 'ThirdLoginController@redirectToProvider');
 	//登录
 	Route::get('/login/git/callback', 'ThirdLoginController@handleProviderCallback');
-		//重定向
+	//重定向
 	Route::get('/login/weibo', 'ThirdLoginController@redirectToProviderWei');
 	//登录
 	Route::get('/login/weibo/callback', 'ThirdLoginController@handleProviderCallbackWei');
+	//重定向
+	Route::get('/login/weixin', 'ThirdLoginController@redirectToProviderWeixin');
+	//登录
+	Route::get('/login/weixin/callback', 'ThirdLoginController@handleProviderCallbackWeixin');
 });
-

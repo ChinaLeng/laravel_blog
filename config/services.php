@@ -58,5 +58,10 @@ return [
         'client_secret' => env('WEIBO_SECRET'),
         'redirect' => 'http://blog.czkup.cn/auth/login/weibo/callback'
     ],
+    'weixinweb' => [
+        'client_id' => env('WEIXINWEB_KEY'),
+        'client_secret' => env('WEIXINWEB_SECRET'),
+        'redirect' => 'http://blog.czkup.cn/auth/login/weixin/callback'
+    ],
 
 ];

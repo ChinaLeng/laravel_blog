@@ -28,5 +28,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         //注册观察者
         \App\Models\Article::observe(\App\Observers\ArticleObserver::class);
+        \App\Models\Comment::observe(\App\Observers\CommentObserver::class);
+        \App\Models\Message::observe(\App\Observers\MessageObserver::class);
     }
 }
