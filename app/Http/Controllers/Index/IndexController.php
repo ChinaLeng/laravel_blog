@@ -130,6 +130,6 @@ class IndexController extends BaseController
         if(!$id){
         	return redirect()->back()->with('success', '服务器错误')->withInput();
         }
-        //return redirect()->back()->with('success', '评论成功');
+        return redirect()->back()->with('success', '评论成功');
     }
 }

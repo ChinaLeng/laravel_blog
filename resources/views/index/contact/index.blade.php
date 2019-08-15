@@ -66,7 +66,7 @@
                         <div class="heading"><h3>共<span class="base-color">{{ count($message) }}</span>条留言</h3></div>
                         <div class="all-comments">
                             @foreach($message as $k => $v)
-                            <div class="single-comment">
+                            <div class="single-comment" id="{{ $v['id'] }}_{{ $v['name'] }}">
                                 <div class="vertical-image-text">
                                     <div class="image">
                                         <img src="/index/author1.jpg" alt="author1.jpg" class="img-circle">
@@ -76,11 +76,11 @@
                                         <p>{!! $v['content'] !!}</p>
                                     </div>
                                     <div class="replay">
-                                        <a href="#hui" id="{{ $v['id'] }}" name="{{ $v['name'] }}" class="easy-button button-small">回复</a>
+                                        <a href="#hui" pid="{{ $v['id'] }}" name="{{ $v['name'] }}" class="easy-button button-small">回复</a>
                                     </div>
                                 </div>
                                 @foreach($v['child'] as $x => $y)
-                                <div class="replay-comment single-comment">
+                                <div class="replay-comment single-comment" id="{{ $y['id'] }}_{{ $y['name'] }}">
                                     <div class="vertical-image-text">
                                         <div class="image">
                                             <img src="/index/author1.jpg" alt="author1.jpg" class="img-circle">
@@ -90,7 +90,7 @@
                                             <p>{!! $y['content'] !!}</p>
                                         </div>
                                         <div class="replay">
-                                            <a href="#hui" id="{{ $y['id'] }}" name="{{ $y['name'] }}" class="easy-button button-small">回复</a>
+                                            <a href="#hui" pid="{{ $y['id'] }}" name="{{ $y['name'] }}" class="easy-button button-small">回复</a>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
         //回复评论
         $('.single-comment').on('click','.button-small',function(){
             var obj=$(this);
-            var pid= $(obj).attr('id'),
+            var pid= $(obj).attr('pid'),
                 name= $(obj).attr('name');
             $('#content').attr('placeholder','@'+name);
             $('#pid').val(pid);
