@@ -80,4 +80,12 @@ class Comment extends Model
             }
         }
     }
+    public function user()
+    {
+        return $this->belongsTo('App\Models\SocialUser','social_users_id','id');
+    }
+    public function article()
+    {
+        return $this->belongsTo('App\Models\Article','article_id','id');
+    }
 }

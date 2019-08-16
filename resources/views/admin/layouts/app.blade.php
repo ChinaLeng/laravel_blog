@@ -55,7 +55,7 @@
                 </div> <!-- content -->
 
                 <footer class="footer text-right">
-                    <span class="">2018 © Lara</span>
+                    <span class="">2018 © 个人博客</span>
                 </footer>
 
             </div>

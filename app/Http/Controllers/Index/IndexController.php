@@ -7,8 +7,10 @@ use App\Models\Article;
 use App\Models\SocialUser;
 use App\Models\Comment;
 use App\Models\Message;
+use App\Models\ArticleTag;
 use Cache;
 use Validator;
+use DB;
 
 class IndexController extends BaseController
 {
@@ -19,6 +21,11 @@ class IndexController extends BaseController
 	public function index()
 	{
 		$article = Article::with('user')->orderBy('created_at','desc')->simplePaginate(3);
+		/*$articles = Article::query();
+		$articles->with('user');
+		$articles->orderBy('created_at','desc');
+		$articles->simplePaginate(3);
+		$article = $articles->get()->toArray();*/
 		return view('index.home.index',compact('article'));
 	}
 	/**
@@ -131,5 +138,27 @@ class IndexController extends BaseController
         	return redirect()->back()->with('success', '服务器错误')->withInput();
         }
         return redirect()->back()->with('success', '评论成功');
+    }
+    /**
+     * 标签搜索文章
+     * @param  string $tagid [description]
+     * @return [type]        [description]
+     */
+    public function tagArticleList($tagid='')
+    {
+    	if(empty($tagid)){
+			return redirect('/');
+    	}
+    	$article_ids = DB::select('SELECT `article_id` FROM article_tags WHERE FIND_IN_SET(:tagid,tag_id)', ['tagid' => $tagid]);
+    	$ids = array_column($article_ids,'article_id');
+    	if(empty($ids)){
+			return redirect('/');
+    	}
+    	$article = Article::with(['user'])->whereIn('id',$ids)->orderBy('created_at','desc')->simplePaginate(3);
+    	return view('index.home.index',compact('article'));
+    }
+    public function friend()
+    {
+    	return view('index.friend.index');
     }
 }

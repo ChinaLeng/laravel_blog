@@ -24,6 +24,8 @@ Route::namespace('Index')->group(function(){
 	Route::post('/message','IndexController@message')->name('index.message');
 	Route::any('/wechat', 'WeChatController@serve');
 	Route::any('/callback', 'WeChatController@callback');
+	Route::get('/list/{tagid?}','IndexController@tagArticleList')->name('index.list');
+	Route::get('/friend','IndexController@friend')->name('index.friend');
 });
 //后台
 Route::namespace('Admin')->prefix('admins')->middleware('auth.login')->group(function(){
@@ -56,6 +58,34 @@ Route::namespace('Admin')->prefix('admins')->middleware('auth.login')->group(fun
 		Route::post('/update/{article}', 'ArticleController@update')->name('admins.article.update');
 		//文章删除
 		Route::get('/del/{article}', 'ArticleController@del')->name('admins.article.del');
+	});
+	Route::prefix('comment')->group(function () {
+		//评论列表
+		Route::get('/', 'CommentController@index')->name('admins.comment.index');
+		//评论隐藏
+		Route::get('/hide/{id}', 'CommentController@hide')->name('admins.comment.hide');
+		//评论显示
+		Route::get('/show/{id}', 'CommentController@show')->name('admins.comment.show');
+	});
+	Route::prefix('message')->group(function () {
+		//留言板列表
+		Route::get('/', 'MessageController@index')->name('admins.message.index');
+		//留言板隐藏
+		Route::get('/hide/{id}', 'MessageController@hide')->name('admins.message.hide');
+		//留言板显示
+		Route::get('/show/{id}', 'MessageController@show')->name('admins.message.show');
+	});
+	Route::prefix('friend')->group(function () {
+		//友链列表
+		Route::get('/', 'FriendController@index')->name('admins.friend.index');
+		//删除友链
+		Route::get('/hide/{id}', 'FriendController@hide')->name('admins.friend.hide');
+		//新增友链
+		Route::get('/show', 'FriendController@show')->name('admins.friend.show');
+		Route::post('/store', 'FriendController@store')->name('admins.friend.store');
+		//编辑
+		Route::get('/edit/{id}', 'FriendController@edit')->name('admins.friend.edit');
+		Route::post('/update/{id}', 'FriendController@update')->name('admins.friend.update');
 	});
 });
 //第三方登录

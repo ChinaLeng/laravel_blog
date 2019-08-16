@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-12">
         	@foreach($file as $k=>$v)
-            <div class="paginations">
+            <div class="paginations" id="{{ $k }}">
 				<span>{{ $k }}</span>
             </div>
         	@foreach($v as $y=>$x)

@@ -37,8 +37,8 @@ class SendCommentEmail implements ShouldQueue
      */
     public function handle()
     {
-        Mail::send('emails.mail_template',$this->content,function($message) use ($this->email,$this->subject){   
-            $message ->to($this->email)->subject($this->subject);        
+        Mail::send('emails.mail_template',$this->content,function($message){   
+            $message->to($this->email)->subject($this->subject);
         });
     }
 }

@@ -19,7 +19,7 @@
                         <p>
                             <ul class="colorlib-footer-links">
                                 @foreach(\App\Models\Article::getFile() as $k => $v)
-                                <li><a href="#">{{ $v['pub_date'] }}</a></li>
+                                <li><a href="{{ route('index.file') }}#{{ $v['pub_date'] }}">{{ $v['pub_date'] }}年({{ $v['cou'] }})</a></li>
                                 @endforeach
                             </ul>
                         </p>
@@ -28,7 +28,7 @@
                         <h3>標簽</h3>
                         <p class="tags">
                             @foreach(\App\Models\Tag::all() as $k => $v)
-                                <span><a href="#"><i class="icon-tag"></i>{{ $v->name }}</a></span>
+                                <span><a href="{{ route('index.list',[$v->id]) }}"><i class="icon-tag"></i>{{ $v->name }}</a></span>
                             @endforeach
                         </p>
                     </div>

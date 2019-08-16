@@ -27,7 +27,7 @@ class Article extends Model
     }
     public static function getFile()
     {
-        $files = Article::select(DB::raw('YEAR(created_at) as pub_date'))->groupBy('pub_date')->orderBy('pub_date', 'desc')->get()->toArray();
+        $files = Article::select(DB::raw('YEAR(created_at) as pub_date,count(*) as cou'))->groupBy('pub_date')->orderBy('pub_date', 'desc')->get()->toArray();
         return $files;
     }
     public static function getAllArticle()

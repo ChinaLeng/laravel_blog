@@ -3,7 +3,7 @@
     <!-- LOGO -->
     <div class="topbar-left">
         <div class="text-center">
-            <a href="" class="logo"><i class="icon-magnet icon-c-logo"></i><span>Lara后台管理</span></a>
+            <a href="" class="logo"><i class="icon-magnet icon-c-logo"></i><span>个人博客-后台管理</span></a>
         </div>
     </div>
 

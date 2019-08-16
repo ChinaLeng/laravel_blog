@@ -73,7 +73,11 @@
                                     </div>
                                     <div class="text">
                                         <div class="name-date"><h5>{{ $v['name'] }}</h5><span>{{ $v['created_at'] }}</span></div>
+                                        @if($v['status'] == 1)
                                         <p>{!! $v['content'] !!}</p>
+                                        @else
+                                        <p style="background: #DCDCDC;">评论已被屏蔽</p>
+                                        @endif
                                     </div>
                                     <div class="replay">
                                         <a href="#hui" pid="{{ $v['id'] }}" name="{{ $v['name'] }}" class="easy-button button-small">回复</a>
@@ -87,7 +91,11 @@
                                         </div>
                                         <div class="text">
                                             <div class="name-date"><h5>{{ $y['name'] }}<span style="font-size: 12px;color: #828282;padding: 0 6px;">回复</span>{{ $y['reply_name'] }}</h5><span>{{ $y['created_at'] }}</span></div>
+                                            @if($y['status'] == 1)
                                             <p>{!! $y['content'] !!}</p>
+                                            @else
+                                            <p style="background: #DCDCDC;">评论已被屏蔽</p>
+                                            @endif
                                         </div>
                                         <div class="replay">
                                             <a href="#hui" pid="{{ $y['id'] }}" name="{{ $y['name'] }}" class="easy-button button-small">回复</a>

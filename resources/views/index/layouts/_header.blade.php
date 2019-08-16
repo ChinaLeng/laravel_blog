@@ -15,6 +15,7 @@
                             <li><a href="/">首頁</a></li>
                             <li><a href="{{ route('index.file') }}">歸檔 </a></li>
                             <li><a href="{{ route('index.about') }}">關於我</a></li>
+                            <li><a href="{{ route('index.friend') }}">友情链接</a></li>
                             <li><a href='https://github.com/ChinaLeng'>GitHub</a></li>
                         </ul>
                     </nav>

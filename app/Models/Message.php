@@ -16,7 +16,6 @@ class Message extends Model
     {
     	$map = [
             'pid'        => 0,
-            'status'     => 1,
         ];
         $data = $this
             ->where($map)
@@ -55,7 +54,6 @@ class Message extends Model
     {
         $map = [
             'pid' => $data['id'],
-            'status'     => 1,
         ];
         $child = $this
             ->where($map)

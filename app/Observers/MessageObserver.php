@@ -20,7 +20,8 @@ class MessageObserver
             $messages = DB::table('messages')->where('id',$id)->first();
             if(!empty($messages->email)){
                 //评论链接
-                $url = config('app.url').'/about#'.$messagee->id.'_'.$messagee->name;
+                //$url = config('app.url').'/about#'.$messagee->id.'_'.$messagee->name;
+                $url = route('index.about').'#'.$messagee->id.'_'.$messagee->name;
                 $content = ['url'=>$url];
                 dispatch(new SendCommentEmail($messages->email, $content, '留言回复'));
             }

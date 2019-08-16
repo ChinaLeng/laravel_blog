@@ -20,68 +20,52 @@
                     <div class="blog-detail-text">
                         {!! $article->content !!}
                         <div class="row">
-                            <div class="col-xs-6">
-                                <div class="social-sharing-icon">
-                                    <span class="share-icon"><a href="#"><i class="fa fa-share-alt"></i></a></span>
-                                    <span class="share-icon"><a href="#"><i class="fa fa-facebook"></i></a></span>
-                                    <span class="share-icon"><a href="#"><i class="fa fa-twitter"></i></a></span>
-                                    <span class="share-icon"><a href="#"><i class="fa fa-google-plus"></i></a></span>
-                                </div>
-                            </div>
-                            <div class="col-xs-6">
+                            <div class="col-xs-6" style="width: 100%;">
                                 <div class="tag-list-container">
-                                    <span>Tags:  </span>
+                                    <span>标签:  </span>
                                     <div class="tag-list">
                                         @foreach($article->getTag($article->articletag->tag_id) as $k => $v)
-                                        <a href="{{ $v->id }}" class="base-color">{{ $v->name }}</a>
+                                        <a href="{{ route('index.list',[$v->id]) }}" class="base-color">{{ $v->name }}</a>
                                         @endforeach
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-<!--                     <div class="author-information">
-                        <div class="vertical-image-text">
-                            <div class="image">
-                                <img src="images/author1.jpg" class="img-responsive img-circle"  alt="author">
-                            </div>
-                            <div class="text">
-                                <h4><a href="#">Megan Peu</a></h4>
-                                <p>On the other hand, we denounce with righteous indignation and dislike men who charms of pleasure of the momen</p>
-                                <div class="social-sharing-icon color-full-social">
-                                    <span class="share-icon"><a href="#" class="facebook-bg"><i class="fa fa-facebook"></i></a></span>
-                                    <span class="share-icon"><a href="#" class="twitter-bg"><i class="fa fa-twitter"></i></a></span>
-                                    <span class="share-icon"><a href="#" class="google-plus-bg"><i class="fa fa-google-plus"></i></a></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="blog-post-comment-box">
                         <div class="heading"><h3><span class="base-color">{{ count($comment) }}</span>条评论</h3></div>
                         <div class="all-comments">
                             @foreach($comment as $k => $v)
-                            <div class="single-comment">
+                            <div class="single-comment" id="{{ $v['id'] }}_{{ $v['name'] }}">
                                 <div class="vertical-image-text">
                                     <div class="image">
                                         <img src="{{ $v['avatar'] }}" alt="author1.jpg" class="img-circle">
                                     </div>
                                     <div class="text">
                                         <div class="name-date"><h5>{{ $v['name'] }}</h5><span>{{ $v['created_at'] }}</span></div>
+                                        @if($v['status'] == 1)
                                         <p>{!! $v['content'] !!}</p>
+                                        @else
+                                        <p style="background: #DCDCDC;">评论已被屏蔽</p>
+                                        @endif
                                     </div>
                                     <div class="replay">
                                         <a href="#comment-box" id="{{ $v['id'] }}" name="{{ $v['name'] }}" class="easy-button button-small">回复</a>
                                     </div>
                                 </div>
                                 @foreach($v['child'] as $x => $y)
-                                <div class="replay-comment single-comment">
+                                <div class="replay-comment single-comment" id="{{ $y['id'] }}_{{ $y['name'] }}">
                                     <div class="vertical-image-text">
                                         <div class="image">
                                             <img src="{{ $y['avatar'] }}" alt="author1.jpg" class="img-circle">
                                         </div>
                                         <div class="text">
                                             <div class="name-date"><h5>{{ $y['name'] }}<span style="font-size: 12px;color: #828282;padding: 0 6px;">回复</span>{{ $y['reply_name'] }}</h5><span>{{ $y['created_at'] }}</span></div>
+                                            @if($y['status'] == 1)
                                             <p>{!! $y['content'] !!}</p>
+                                            @else
+                                            <p style="background: #DCDCDC;">评论已被屏蔽</p>
+                                            @endif
                                         </div>
                                         <div class="replay">
                                             <a href="#comment-box" id="{{ $y['id'] }}" name="{{ $y['name'] }}" class="easy-button button-small">回复</a>
