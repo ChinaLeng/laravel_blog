@@ -22,10 +22,16 @@
                 </div>
             </div>
             <div class="login-register">
+                @if(Auth::guard('social')->check())
+                <span>您好</span>
+                <span >❤️</span>
+                <span><a href="#">Auth::guard('social')->user()->name</a></span>
+                @else
                 <span>登陸：</span>
                 <span><a href="{{ route('login.weibo') }}">微博</a></span>
                 <span >❤️</span>
                 <span><a href="{{ route('login.github') }}">GitHub</a></span>
+                @endif
             </div>
             <div class="logo">
                 <a href="#">☽</a>

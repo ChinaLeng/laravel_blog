@@ -89,7 +89,7 @@ Route::namespace('Admin')->prefix('admins')->middleware('auth.login')->group(fun
 	});
 });
 //第三方登录
-Route::namespace('Auth')->prefix('auth')->group(function(){
+Route::namespace('Auth')->prefix('auth')->middleware('auth.checklogin')->group(function(){
 	//重定向
 	Route::get('/login/github', 'ThirdLoginController@redirectToProvider')->name('login.github');;
 	//登录
