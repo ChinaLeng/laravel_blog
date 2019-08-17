@@ -43,7 +43,7 @@ class ArticleController extends BaseController
 		//添加标签
 		if($request->has('article_tag')){
 			$tag_id = implode(",", $request->post('article_tag'));
-			ArticleTag::create(['article_id'=>$article->id,'tag_id'=>"'".$tag_id."'"]);
+			ArticleTag::create(['article_id'=>$article->id,'tag_id'=>$tag_id]);
 		}
 		return redirect()->route('admins.article.index')->with('success', '创建成功');
 	}
