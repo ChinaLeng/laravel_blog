@@ -25,11 +25,11 @@
 
                 <ul class="nav navbar-nav navbar-right pull-right">
                     <li class="hidden-xs">
-                        <a href="" class="waves-effect waves-light">111</a>
+                        <a href="" class="waves-effect waves-light">{{ Auth::guard('social')->user()->name }}</a>
                     </li>
 
                     <li class="dropdown">
-                        <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="" alt="user-img" class="img-circle"> </a>
+                        <a href="" class="dropdown-toggle profile" data-toggle="dropdown" aria-expanded="true"><img src="{{ Auth::guard('social')->user()->avatar }}" alt="user-img" class="img-circle"> </a>
                         <ul class="dropdown-menu">
                             <li><a href=""><i class="ti-user m-r-5"></i> 我的资料</a></li>
                             <li><a href=""><i class="ti-settings m-r-5"></i> 修改密码</a></li>
