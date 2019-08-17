@@ -38,4 +38,28 @@
                 <!-- <a href="#"></a> -->
             </div>
         </div>
+        <div class="hidden-sidebar">
+            <div id="hidden-sidebar-close">
+                <i class="icon-icomoon-close"></i>
+            </div>
+            <div class="sidebar">
+                <aside class="widget author-widget text-center">
+                    <div class="widget-title">
+                        <a href="/" class="base-color">首頁</a>
+                    </div>
+                    <div class="widget-title">
+                        <a href="{{ route('index.file') }}" class="base-color">歸檔</a>
+                    </div>
+                    <div class="widget-title">
+                        <a href="{{ route('index.about') }}" class="base-color">關於我</a>
+                    </div>
+                    <div class="widget-title">
+                        <a href="{{ route('index.friend') }}" class="base-color">友情链接</a>
+                    </div>
+                    <div class="widget-title">
+                        <a href='https://github.com/ChinaLeng' class="base-color">GitHub</a>
+                    </div>
+                </aside>
+            </div>
+        </div>
     </header>

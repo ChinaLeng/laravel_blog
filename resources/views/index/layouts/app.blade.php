@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="/index/css/style.css">
     <script src="/index/js/modernizr-2.8.3.min.js"></script>
     <script src="/index/js/jquery-2.2.4.min.js"></script>
+    <script src="/index/js/bootstrap.min.js"></script>
+    <script src="/index/js/custom.js"></script>
 </head>
 <body class="blue-primary-color">
     @include('index.layouts._header')
