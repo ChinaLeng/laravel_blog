@@ -10,7 +10,7 @@ class AuthLogin
     public function handle($request, Closure $next)
     {
     	dump(Auth::guard('social'));
-    	dump(Auth::guard('social')->user()->name;
+    	dump(Auth::guard('social')->user()->name);
     	dd(Auth::guard('social')->user()->is_admin);
         // 如果不是管理员或者没有登录;则重定向首页
         if (!Auth::guard('social')->check() || Auth::guard('social')->is_admin() != 1) {
