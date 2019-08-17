@@ -109,7 +109,7 @@
         $('.blog-post-leave-comment').on('click', '.active', function () {
             var obj=$(this);
             $.get("{{ route('index.checklogin') }}", function(data) {
-                if(data.status === 0){
+                if(data.status === 1){
                     var content = $('#content').val();
                     var aid     = $(obj).attr('aid'),
                         pid     = $(obj).attr('pid'),
