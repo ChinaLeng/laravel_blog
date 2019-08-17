@@ -9,7 +9,9 @@ class AuthLogin
 {
     public function handle($request, Closure $next)
     {
-    	dd(Auth::guard('social'));
+    	var_dump(Auth::guard('social'));
+    	var_dump(Auth::guard('social')->name());
+    	dd(Auth::guard('social')->is_admin());
         // 如果不是管理员或者没有登录;则重定向首页
         if (!Auth::guard('social')->check() || Auth::guard('social')->is_admin() != 1) {
             return redirect('/');
