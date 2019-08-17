@@ -37,7 +37,7 @@ class ThirdLoginController extends Controller
         }
         //获取用户信息
         $user = Socialite::driver('github')->user();
-        $this->userInfo($user);
+        $this->userInfo($user,$request->getClientIp());
         // 如果session没有存储登录前的页面;则直接返回到首页
         return redirect(url('/'));
 
@@ -68,7 +68,7 @@ class ThirdLoginController extends Controller
         }
         //获取用户信息
         $user = Socialite::driver('weibo')->user();
-        $this->userInfo($user);
+        $this->userInfo($user,$request->getClientIp());
         // 如果session没有存储登录前的页面;则直接返回到首页
         return redirect(url('/'));
 
@@ -87,7 +87,7 @@ class ThirdLoginController extends Controller
         session($data);*/
         return Socialite::driver('weixinweb')->redirect();
     }
-    public function userInfo($user)
+    public function userInfo($user,$ip)
     {
 
         //判断用户是否存在
@@ -104,7 +104,7 @@ class ThirdLoginController extends Controller
             SocialUser::where('id',$user_id)->update([
                 'name'          => $name,
                 'access_token'  => $user->token,
-                'last_login_ip' => $request->getClientIp(),
+                'last_login_ip' => $ip,
             ]);
         }else{
             //新增用户
