@@ -91,11 +91,11 @@ Route::namespace('Admin')->prefix('admins')->middleware('auth.login')->group(fun
 //第三方登录
 Route::namespace('Auth')->prefix('auth')->group(function(){
 	//重定向
-	Route::get('/login/github', 'ThirdLoginController@redirectToProvider');
+	Route::get('/login/github', 'ThirdLoginController@redirectToProvider')->name('login.github');;
 	//登录
 	Route::get('/login/git/callback', 'ThirdLoginController@handleProviderCallback');
 	//重定向
-	Route::get('/login/weibo', 'ThirdLoginController@redirectToProviderWei');
+	Route::get('/login/weibo', 'ThirdLoginController@redirectToProviderWei')->name('login.weibo');
 	//登录
 	Route::get('/login/weibo/callback', 'ThirdLoginController@handleProviderCallbackWei');
 	//重定向

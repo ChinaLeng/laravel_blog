@@ -22,9 +22,10 @@
                 </div>
             </div>
             <div class="login-register">
-                <span><a>登陸</a></span>
+                <span>登陸：</span>
+                <span><a href="{{ route('login.weibo') }}">微博</a></span>
                 <span >❤️</span>
-                <span><a>注冊</a></span>
+                <span><a href="{{ route('login.github') }}">GitHub</a></span>
             </div>
             <div class="logo">
                 <a href="#">☽</a>

@@ -8,6 +8,7 @@ use App\Models\SocialUser;
 use App\Models\Comment;
 use App\Models\Message;
 use App\Models\ArticleTag;
+use App\Models\Friend;
 use Cache;
 use Validator;
 use DB;
@@ -159,6 +160,7 @@ class IndexController extends BaseController
     }
     public function friend()
     {
-    	return view('index.friend.index');
+    	$list = Friend::all();
+    	return view('index.friend.index',compact('list'));
     }
 }
