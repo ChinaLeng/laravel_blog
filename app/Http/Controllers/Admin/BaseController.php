@@ -34,10 +34,10 @@ class BaseController extends Controller
 	}
 	public function getUserId()
 	{
-		return Auth::guard('social')->id();
+		return Auth::guard('social')->user()->id;
 	}
 	public function getUserName()
 	{
-		return Auth::guard('social')->name();
+		return Auth::guard('social')->user()->name;
 	}
 }

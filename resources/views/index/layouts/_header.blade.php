@@ -34,8 +34,8 @@
                 @endif
             </div>
             <div class="logo">
-                <a href="#">☽</a>
-                <!-- <a href="#">☼</a> -->
+                <a href="#">{{ \App\Models\Article::get_day() }}</a>
+                <!-- <a href="#"></a> -->
             </div>
         </div>
     </header>
