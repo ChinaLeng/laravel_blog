@@ -12,11 +12,12 @@
                             <i class="icon-menu-button"></i>
                         </div>
                         <ul>
-                            <li><a href="/">首頁</a></li>
-                            <li><a href="{{ route('index.file') }}">歸檔 </a></li>
-                            <li><a href="{{ route('index.about') }}">關於我</a></li>
-                            <li><a href="{{ route('index.friend') }}">友情链接</a></li>
-                            <li><a href='https://github.com/ChinaLeng'>GitHub</a></li>
+                            <li><a href="/">{首頁}</a></li>
+                            <li><a href="{{ route('index.file') }}">{歸檔}</a></li>
+                            <li><a href="{{ route('index.about') }}">{關於我}</a></li>
+                            <li><a href="{{ route('index.friend') }}">{友情链接}</a></li>
+                            <li><a href='https://github.com/ChinaLeng'>{GitHub}</a></li>
+                            <li><a href='https://czkup.cn/'>->这才是主页<-</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -45,19 +46,22 @@
             <div class="sidebar">
                 <aside class="widget author-widget text-center">
                     <div class="widget-title">
-                        <a href="/" class="base-color">首頁</a>
+                        <a href="/" class="base-color">{首頁}</a>
                     </div>
                     <div class="widget-title">
-                        <a href="{{ route('index.file') }}" class="base-color">歸檔</a>
+                        <a href="{{ route('index.file') }}" class="base-color">{歸檔}</a>
                     </div>
                     <div class="widget-title">
-                        <a href="{{ route('index.about') }}" class="base-color">關於我</a>
+                        <a href="{{ route('index.about') }}" class="base-color">{關於我}</a>
                     </div>
                     <div class="widget-title">
-                        <a href="{{ route('index.friend') }}" class="base-color">友情链接</a>
+                        <a href="{{ route('index.friend') }}" class="base-color">{友情链接}</a>
                     </div>
                     <div class="widget-title">
-                        <a href='https://github.com/ChinaLeng' class="base-color">GitHub</a>
+                        <a href='https://github.com/ChinaLeng' class="base-color">{GitHub}</a>
+                    </div>
+                    <div class="widget-title">
+                        <a href='https://czkup.cn/' class="base-color">->这才是主页<-</a>
                     </div>
                 </aside>
             </div>
