@@ -8,7 +8,7 @@
 
         <link rel="shortcut icon" href="">
 
-        <title>@yield('title') - Lara后台管理</title>
+        <title>@yield('title') - 后台管理</title>
 
         @yield('stylesheet')
         <link rel="stylesheet" type="text/css" href="/admin/css/bootstrap.min.css" />

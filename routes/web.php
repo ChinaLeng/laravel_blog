@@ -87,6 +87,10 @@ Route::namespace('Admin')->prefix('admins')->middleware('auth.login')->group(fun
 		Route::get('/edit/{id}', 'FriendController@edit')->name('admins.friend.edit');
 		Route::post('/update/{id}', 'FriendController@update')->name('admins.friend.update');
 	});
+	Route::prefix('user')->group(function () {
+		//用户列表
+		Route::get('/', 'SocialUsersController@index')->name('admins.user.index');
+	});
 });
 //第三方登录
 Route::namespace('Auth')->prefix('auth')->middleware('auth.checklogin')->group(function(){
@@ -102,4 +106,8 @@ Route::namespace('Auth')->prefix('auth')->middleware('auth.checklogin')->group(f
 	Route::get('/login/weixin', 'ThirdLoginController@redirectToProviderWeixin');
 	//登录
 	Route::get('/login/weixin/callback', 'ThirdLoginController@handleProviderCallbackWeixin');
+	//重定向
+	Route::get('/login/qq', 'ThirdLoginController@redirectToProviderQq')->name('login.qq');
+	//登录
+	Route::get('/login/qq/callback', 'ThirdLoginController@handleProviderCallbackQq');
 });

@@ -17,6 +17,7 @@
                         <li class=""><a href="{{ route('admins.comment.index') }}">评论</a></li>
                         <li class=""><a href="{{ route('admins.message.index') }}">留言</a></li>
                         <li class=""><a href="{{ route('admins.friend.index') }}">友链</a></li>
+                        <li class=""><a href="{{ route('admins.user.index') }}">用户</a></li>
                     </ul>
                 </li>
             </ul>

@@ -37,7 +37,7 @@ class ThirdLoginController extends Controller
         }
         //获取用户信息
         $user = Socialite::driver('github')->user();
-        $this->userInfo($user,$request->getClientIp());
+        $this->userInfo($user,$request->getClientIp(),3);
         // 如果session没有存储登录前的页面;则直接返回到首页
         return redirect(url('/'));
 
@@ -68,7 +68,7 @@ class ThirdLoginController extends Controller
         }
         //获取用户信息
         $user = Socialite::driver('weibo')->user();
-        $this->userInfo($user,$request->getClientIp());
+        $this->userInfo($user,$request->getClientIp(),2);
         // 如果session没有存储登录前的页面;则直接返回到首页
         return redirect(url('/'));
 
@@ -87,7 +87,42 @@ class ThirdLoginController extends Controller
         session($data);*/
         return Socialite::driver('weixinweb')->redirect();
     }
-    public function userInfo($user,$ip)
+    /**
+     * 将用户重定向到QQ认证页面
+     *
+     * @return Response
+     */
+    public function redirectToProviderQq()
+    {
+        // 记录登录前的url
+/*        $data = [
+            'targetUrl' => URL::previous(),
+        ];
+        session($data);*/
+        return Socialite::driver('qq')->redirect();
+    }
+        /**
+     * 从QQ获取用户信息.
+     *
+     * @return Response
+     */
+    public function handleProviderCallbackQq(Request $request)
+    {
+        if (!$request->has('state')) {
+            return abort(404);
+        }
+        //获取用户信息
+        $user = Socialite::driver('qq')->user();
+        $this->userInfo($user,$request->getClientIp(),1);
+        // 如果session没有存储登录前的页面;则直接返回到首页
+        return redirect(url('/'));
+
+    }
+
+
+
+
+    public function userInfo($user,$ip,$type)
     {
 
         //判断用户是否存在
@@ -109,7 +144,7 @@ class ThirdLoginController extends Controller
         }else{
             //新增用户
             $userUp = SocialUser::create([
-                'socialite_client_id'          => 3,
+                'socialite_client_id'          => $type,
                 'name'                         => $name,
                 'avatar'                       => $user->avatar,
                 'openid'                       => $user->id,

@@ -32,6 +32,8 @@
                 <span><a href="{{ route('login.weibo') }}">微博</a></span>
                 <span >❤️</span>
                 <span><a href="{{ route('login.github') }}">GitHub</a></span>
+                <!-- <span >❤️</span>
+                <span><a href="{{ route('login.qq') }}">QQ</a></span> -->
                 @endif
             </div>
             <div class="logo">

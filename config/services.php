@@ -63,5 +63,10 @@ return [
         'client_secret' => env('WEIXINWEB_SECRET'),
         'redirect' => 'http://blog.czkup.cn/auth/login/weixin/callback'
     ],
+    'qq' => [
+        'client_id' => env('QQ_KEY'),
+        'client_secret' => env('QQ_SECRET'),
+        'redirect' => 'http://blog.czkup.cn/auth/login/qq/callback'
+    ],
 
 ];
