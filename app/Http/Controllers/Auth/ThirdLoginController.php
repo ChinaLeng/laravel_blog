@@ -108,7 +108,7 @@ class ThirdLoginController extends Controller
      */
     public function handleProviderCallbackQq(Request $request)
     {
-        if (!$request->has('state')) {
+        if (!$request->has('code')) {
             return abort(404);
         }
         //获取用户信息
