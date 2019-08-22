@@ -149,7 +149,7 @@ class ThirdLoginController extends Controller
                 'avatar'                       => $user->avatar,
                 'openid'                       => $user->id,
                 'access_token'                 => $user->token,
-                'last_login_ip'                => $request->getClientIp(),
+                'last_login_ip'                => $ip,
                 'email'                        => $user->email,
             ]);
             $user_id = $userUp->id;
