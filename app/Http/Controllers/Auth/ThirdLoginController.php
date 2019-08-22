@@ -113,6 +113,7 @@ class ThirdLoginController extends Controller
         }
         //获取用户信息
         $user = Socialite::driver('qq')->user();
+        dd($user);
         $this->userInfo($user,$request->getClientIp(),1);
         // 如果session没有存储登录前的页面;则直接返回到首页
         return redirect(url('/'));
