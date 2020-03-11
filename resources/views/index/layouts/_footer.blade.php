@@ -43,7 +43,9 @@
                         </div>
                         <div class="col-md-6">
                             <div class="footer-right text-right">
-                                <p>TCP 备案:{{config('kuan.tcp')}}</p>
+                                <a href="http://www.beian.miit.gov.cn" target="_blank" style="display: inline-block;">
+                                    <p>TCP 备案:{{config('kuan.tcp')}}</p>
+                                </a>
                             </div>
                         </div>
                     </div>
