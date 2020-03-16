@@ -88,7 +88,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <textarea class="form-control" id="content" placeholder="评论内容" rows="8" cols="80"></textarea>
+                                        <textarea class="form-control" id="content" required placeholder="评论内容" rows="8" cols="80"></textarea>
                                     </div>
                                     <input type="submit" class="easy-button-two active" value="提交" aid="{{ $article->id }}" pid='0'/>
                             </div>
