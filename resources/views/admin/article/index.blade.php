@@ -46,6 +46,7 @@
 						<th>关键词</th>
 						<th>评论数</th>
 						<th>查看数</th>
+						<th>状态</th>
 						<th>置顶</th>
 						<th>评论</th>
 						<th class="text-center">操作</th>
@@ -62,6 +63,7 @@
 						<td>{{ $val->keywords }}</td>
 						<td>{{ $val->reply_count }}</td>
 						<td>{{ $val->view_count }}</td>
+						<td><span class="label label-table {{ $val->is_release == 1 ? 'label-default' : 'label-warning' }}">{{ $val->is_release == 1 ? '发布' : '草稿' }}</span></td>
 						<td><span class="label label-table {{ $val->is_top == 1 ? 'label-default' : 'label-warning' }}">{{ $val->is_top == 1 ? '置顶' : '未置顶' }}</span></td>
 						<td><span class="label label-table {{ $val->is_reply == 1 ? 'label-default' : 'label-warning' }}">{{ $val->is_reply == 1 ? '开启' : '关闭' }}</span></td>
 						<td>

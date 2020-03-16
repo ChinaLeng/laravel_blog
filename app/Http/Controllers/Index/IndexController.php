@@ -21,7 +21,7 @@ class IndexController extends BaseController
 	 */
 	public function index()
 	{
-		$article = Article::with('user')->orderBy('created_at','desc')->simplePaginate(10);
+		$article = Article::with('user')->where('is_release',1)->orderBy('created_at','desc')->simplePaginate(10);
 		/*$articles = Article::query();
 		$articles->with('user');
 		$articles->orderBy('created_at','desc');

@@ -153,6 +153,20 @@
                             </div>
                         </div>
                         <div class="form-group m-b-20">
+                            <label class="m-b-15 col-md-2 control-label">状态</label>
+
+                            <div class="col-md-6">
+                                <div class="radio radio-inline">
+                                    <input type="radio" id="inlineRadio1" value="1" {{ isset($article->is_release) && $article->is_release == 1 ? 'checked' : '' }} name="is_release" checked>
+                                    <label for="inlineRadio1"> 发布 </label>
+                                </div>
+                                <div class="radio radio-inline ">
+                                    <input type="radio" id="inlineRadio2" value="0" {{ isset($article->is_release) && $article->is_release == 0 ? 'checked' : '' }} name="is_release">
+                                    <label for="inlineRadio2"> 草稿 </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group m-b-20">
                             <label class="col-md-2 control-label">查看数</label>
                             <div class="col-md-4">
                                 <input type="text" class="form-control" name="view_count" placeholder="请输入查看数" required  value="{{ $article->view_count ?? 0 }}">

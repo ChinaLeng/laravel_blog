@@ -36,6 +36,7 @@ class ArticleController extends BaseController
 			'is_top'     => $request->post('is_top'),
 			'view_count' => $request->post('view_count'),
 			'is_reply'   => $request->post('is_reply'),
+			'is_release'   => $request->post('is_release'),
 			'user_id'    => $this->getUserId(),
 			'author'     => $this->getUserName(),
 		];
@@ -66,6 +67,7 @@ class ArticleController extends BaseController
 			'is_top'     => $request->post('is_top'),
 			'view_count' => $request->post('view_count'),
 			'is_reply'   => $request->post('is_reply'),
+			'is_release'   => $request->post('is_release'),
 		];
 		$article->update($data);
 		//添加标签

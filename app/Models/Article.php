@@ -10,7 +10,7 @@ class Article extends Model
 {
 	protected $table = 'articles';
     protected $fillable = [
-        'user_id','title','author','content','keywords','is_top','reply_count','view_count','is_reply','slug'
+        'user_id','title','author','content','keywords','is_top','reply_count','view_count','is_reply','slug','is_release'
     ];
     public function articletag()
     {
@@ -27,12 +27,12 @@ class Article extends Model
     }
     public static function getFile()
     {
-        $files = Article::select(DB::raw('YEAR(created_at) as pub_date,count(*) as cou'))->groupBy('pub_date')->orderBy('pub_date', 'desc')->get()->toArray();
+        $files = Article::select(DB::raw('YEAR(created_at) as pub_date,count(*) as cou'))->where('is_release',1)->groupBy('pub_date')->orderBy('pub_date', 'desc')->get()->toArray();
         return $files;
     }
     public static function getAllArticle()
     {
-        $files = Article::select('title','id','created_at','slug',DB::raw('YEAR(created_at) as pub_date'))->orderBy('pub_date', 'desc')->orderBy('created_at','desc')->get()->toArray();
+        $files = Article::select('title','id','created_at','slug',DB::raw('YEAR(created_at) as pub_date'))->where('is_release',1)->orderBy('pub_date', 'desc')->orderBy('created_at','desc')->get()->toArray();
         $data = [];
         foreach ($files as $key => $value) {
             $v = ['id'=>$value['id'],'title'=>$value['title'],'created_at'=>$value['created_at'],'slug'=>$value['slug']];
