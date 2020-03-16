@@ -15,7 +15,7 @@ class ArticleController extends BaseController
 	 */
 	public function index()
 	{
-		$list = Article::paginate(20);
+		$list = Article::orderBy('id','desc')->paginate(20);
 		return view('admin.article.index',compact('list'));
 	}
 	/**
