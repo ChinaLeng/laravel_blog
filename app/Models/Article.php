@@ -32,7 +32,7 @@ class Article extends Model
     }
     public static function getAllArticle()
     {
-        $files = Article::select('title','id','created_at','slug',DB::raw('YEAR(created_at) as pub_date'))->orderBy('pub_date', 'asc')->get()->toArray();
+        $files = Article::select('title','id','created_at','slug',DB::raw('YEAR(created_at) as pub_date'))->orderBy('pub_date', 'desc')->orderBy('created_at','desc')->get()->toArray();
         $data = [];
         foreach ($files as $key => $value) {
             $v = ['id'=>$value['id'],'title'=>$value['title'],'created_at'=>$value['created_at'],'slug'=>$value['slug']];
