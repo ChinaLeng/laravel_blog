@@ -111,6 +111,10 @@
             $.get("{{ route('index.checklogin') }}", function(data) {
                 if(data.status === 1){
                     var content = $('#content').val();
+                    if(content == ''){
+                        alert('请输入内容');
+                        return false;
+                    }
                     var aid     = $(obj).attr('aid'),
                         pid     = $(obj).attr('pid'),
                         email   = $('#email').val(),
