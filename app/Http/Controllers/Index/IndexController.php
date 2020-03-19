@@ -155,7 +155,7 @@ class IndexController extends BaseController
     	if(empty($ids)){
 			return redirect('/');
     	}
-    	$article = Article::with(['user'])->whereIn('id',$ids)->orderBy('created_at','desc')->simplePaginate(3);
+    	$article = Article::with(['user'])->whereIn('id',$ids)->orderBy('created_at','desc')->simplePaginate(10);
     	return view('index.home.index',compact('article'));
     }
     public function friend()
