@@ -17,6 +17,6 @@ class BaseController extends Controller
         $tmpInfo = curl_exec($curl);     //返回api的json对象
         //关闭URL请求
         curl_close($curl);
-        return $tmpInfo;    //返回json对象
+        return json_decode($tmpInfo, true);    //返回json对象
     }
 }
