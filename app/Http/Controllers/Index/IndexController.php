@@ -12,9 +12,11 @@ use App\Models\Friend;
 use Cache;
 use Validator;
 use DB;
+use GuzzleHttp\Client;
 
 class IndexController extends BaseController
 {
+
 	/**
 	 * 文章列表
 	 * @return [type] [description]
@@ -77,20 +79,21 @@ class IndexController extends BaseController
 	 */
 	public function comment(Request $request)
 	{
-		$user_id = 1;
-		$email = $request->input('email', '');
-        if (filter_var($email, FILTER_VALIDATE_EMAIL) !== false) {
-            // 修改邮箱
-            SocialUser::where('id', $user_id)->update([
-                'email' => $email,
-            ]);
+		$api = 'http://api.zjh336.cn/bt/sjtx/api.php?lx=c1';//随机获取一张头像
+        // 发送 HTTP Get 请求
+        $response = $this->curl_get_https($api);
+        dd($response);
+		$validator = Validator::make($request->input(),[
+            'content' => 'required'
+        ]);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
         }
         // 存储评论
         $data = [
         	'article_id' => $request->input('article_id'),
         	'content' => strip_tags($request->input('content'),"<p><a>"),
         	'pid' => $request->input('pid'),
-        	'social_users_id' => $user_id,
         	'status'          => 1,
         ];
         $id = Comment::create($data);

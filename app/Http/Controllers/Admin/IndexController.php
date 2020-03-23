@@ -16,6 +16,13 @@ class IndexController extends BaseController
 	 */
 	public function index()
 	{
+		//http://api.zjh336.cn/bt/sjtx/api.php?lx=c1
+		//// 随机姓氏
+//var_dump($name->randomSurname());
+// 随机名字（不含姓氏）
+//var_dump($name->randomFirstName());
+// 随机全名
+//var_dump($name->randomFullName());
 		$user    = SocialUser::count();
 		$article = Article::count();
 		$message = Message::count();

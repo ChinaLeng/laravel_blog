@@ -22,12 +22,14 @@
                         <div class="row">
                             <div class="col-xs-6" style="width: 100%;">
                                 <div class="tag-list-container">
+                                    @if(!empty($article->articletag->tag_id))
                                     <span>标签:  </span>
                                     <div class="tag-list">
                                         @foreach($article->getTag($article->articletag->tag_id) as $k => $v)
                                         <a href="{{ route('index.list',[$v->id]) }}" class="base-color">{{ $v->name }}</a>
                                         @endforeach
                                     </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -82,15 +84,15 @@
                                 <h3>提交评论</h3>
                             </div>
                             <div class="leave-comment-box" id="comment-box">
-                                    <div class="name-email-website-field">
-                                        <div class="form-group">
-                                            <input type="email" id="email" placeholder="邮箱,可不填写" style="width: 40%;" class="form-control" />
-                                        </div>
-                                    </div>
+                                <form action="{{ route('index.comment') }}" method="post">
+                                    {{ csrf_field() }}
                                     <div class="form-group">
-                                        <textarea class="form-control" id="content" required placeholder="评论内容" rows="8" cols="80"></textarea>
+                                        <textarea class="form-control" id="content" name="content" required placeholder="评论内容" rows="8" cols="80"></textarea>
                                     </div>
                                     <input type="submit" class="easy-button-two active" value="提交" aid="{{ $article->id }}" pid='0'/>
+                                    <input type="hidden" name="pid" value="0" id="pid">
+                                    <input type="hidden" name="article_id" id="aid" value="{{ $article->id }}">
+                                </form>
                             </div>
                         </div>
                         @endif
@@ -106,7 +108,7 @@
 <script type="text/javascript">
     $(function () {
         //发表评论
-        $('.blog-post-leave-comment').on('click', '.active', function () {
+        /*$('.blog-post-leave-comment').on('click', '.active', function () {
             var obj=$(this);
             $.get("{{ route('index.checklogin') }}", function(data) {
                 if(data.status === 1){
@@ -139,14 +141,14 @@
                         })
                 }
             })
-        });
+        });*/
         //回复评论
         $('.single-comment').on('click','.button-small',function(){
             var obj=$(this);
             var pid= $(obj).attr('id'),
                 name= $(obj).attr('name');
             $('#content').attr('placeholder','@'+name);
-            $('.blog-post-leave-comment .active').attr('pid',pid);
+            $('#pid').attr('pid',pid);
         });
     })
 </script>
