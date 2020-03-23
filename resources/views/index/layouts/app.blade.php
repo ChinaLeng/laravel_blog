@@ -15,7 +15,7 @@
     <link rel="icon" sizes="72x72" href="images/favicon/android-icon-72x72.png">
     <link rel="icon" type="image/png" sizes="96x96" href="images/favicon/favicon-96x96.png">
     <!-- Bootstrap css-->
-    <link rel="stylesheet" href="/index/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/index/css/bootstrap.min.css?t=<?php echo time()?>">
     <link rel="stylesheet" href="/index/css/style.css">
     <script src="/index/js/modernizr-2.8.3.min.js"></script>
     <script src="/index/js/jquery-2.2.4.min.js"></script>

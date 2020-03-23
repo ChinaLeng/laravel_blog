@@ -11,7 +11,7 @@ class Comment extends Model
     private $child = [];
 	protected $table = 'comments';
     protected $fillable = [
-        'social_users_id','type','pid','article_id','content','status'
+        'social_users_id','type','pid','article_id','content','status','name','avatar','ip'
     ];
     public function getCommentById($id)
     {
@@ -21,8 +21,7 @@ class Comment extends Model
         ];
         // 关联第三方用户表获取一级评论
         $data = $this
-            ->select('comments.*', 'ou.name', 'ou.avatar', 'ou.is_admin')
-            ->join('social_users as ou', 'comments.social_users_id', 'ou.id')
+            ->select('comments.*')
             ->where($map)
             ->orderBy('created_at', 'desc')
             ->get()
@@ -45,13 +44,7 @@ class Comment extends Model
                     return ($prev < $next) ? -1 : 1;
                 });
                 foreach ($child as $m => $n) {
-                    // 获取被评论人id
-                    $replyUserId = $this->where('id', $n['pid'])->pluck('social_users_id');
-                    // 获取被评论人昵称
-                    $socialiteUserMap = [
-                        'id' => $replyUserId,
-                    ];
-                    $child[$m]['reply_name'] = SocialUser::where($socialiteUserMap)->value('name');
+                    $child[$m]['reply_name'] = $this->where('id', $n['pid'])->value('name');
                 }
             }
             $data[$k]['child'] = $child;
@@ -65,8 +58,7 @@ class Comment extends Model
             'pid' => $data['id'],
         ];
         $child = $this
-            ->select('comments.*', 'ou.name', 'ou.avatar', 'ou.is_admin')
-            ->join('social_users as ou', 'comments.social_users_id', 'ou.id', 'ou.is_admin')
+            ->select('comments.*')
             ->where($map)
             ->orderBy('created_at', 'desc')
             ->get()

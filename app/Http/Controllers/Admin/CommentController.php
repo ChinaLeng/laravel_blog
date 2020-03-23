@@ -13,7 +13,7 @@ class CommentController extends BaseController
 	 */
 	public function index()
 	{
-		$list = Comment::with(['user','article'])->orderBy('created_at', 'desc')->paginate(10);
+		$list = Comment::with('article')->orderBy('created_at', 'desc')->paginate(10);
 		return view('admin.comment.index',compact('list'));
 	}
 	/**

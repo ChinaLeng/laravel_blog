@@ -13,6 +13,7 @@ use Cache;
 use Validator;
 use DB;
 use GuzzleHttp\Client;
+use App\Libs\Name;
 
 class IndexController extends BaseController
 {
@@ -79,28 +80,36 @@ class IndexController extends BaseController
 	 */
 	public function comment(Request $request)
 	{
-		$api = 'http://api.zjh336.cn/bt/sjtx/api.php?lx=c1';//随机获取一张头像
-        // 发送 HTTP Get 请求
-        $response = file_get_contents($api);
-        dd($response);
 		$validator = Validator::make($request->input(),[
             'content' => 'required'
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        $api = 'https://api.uomg.com/api/rand.avatar?format=json';//随机获取一张头像
+        // 发送 HTTP Get 请求
+        $response = file_get_contents($api);
+        $response = json_decode($response,true);
+        $avatar = '';
+        if($response['code'] == 1){
+        	$avatar = $response['imgurl'];
+        }
+		$name = new Name();
         // 存储评论
         $data = [
         	'article_id' => $request->input('article_id'),
         	'content' => strip_tags($request->input('content'),"<p><a>"),
         	'pid' => $request->input('pid'),
         	'status'          => 1,
+        	'avatar' => $avatar,
+        	'name' => $name->randomFullName(),
+        	'ip' => $request->getClientIp()
         ];
         $id = Comment::create($data);
         if(!$id){
-        	return response()->json(['code'=>500,'msg'=>'服务器错误'], 500);
+        	return redirect()->back()->with('success', '服务器错误')->withInput();
         }
-        return response()->json(['code'=>200,'msg'=>'评论成功'], 200);
+        return redirect()->back()->with('success', '评论成功');
 	}
 	/**
 	 * 归档

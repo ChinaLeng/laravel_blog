@@ -42,6 +42,7 @@
 						<th>用户名</th>
 						<th>文章标题</th>
 						<th class="text-center">评论时间</th>
+						<th class="text-center">ip</th>
 						<th class="text-center">操作</th>
 					</tr>
 				</thead>
@@ -52,9 +53,10 @@
 					<tr>
 						<td>{{ $val->id }}</td>
 						<td>{{ $val->content }}</td>
-						<td>{{ $val->user->name }}</td>
+						<td>{{ $val->name }}</td>
 						<td>{{ $val->article->title }}</td>
 						<td>{{ $val->created_at }}</td>
+						<td>{{ $val->ip }}</td>
 						<td>
 							@if($val->status == 1)
 							<a href="{{ route('admins.comment.hide',$val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5">隐藏</a>
