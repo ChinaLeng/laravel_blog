@@ -81,7 +81,7 @@ class IndexController extends BaseController
 	{
 		$api = 'http://api.zjh336.cn/bt/sjtx/api.php?lx=c1';//随机获取一张头像
         // 发送 HTTP Get 请求
-        $response = $this->curl_get_https($api);
+        $response = file_get_contents($api);
         dd($response);
 		$validator = Validator::make($request->input(),[
             'content' => 'required'
