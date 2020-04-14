@@ -36,10 +36,9 @@
                 <span><a href="{{ route('login.qq') }}">QQ</a></span>
                 @endif
             </div>
-            <div class="logo">
+            <!-- <div class="logo">
                 <a href="#">{{ \App\Models\Article::get_day() }}</a>
-                <!-- <a href="#"></a> -->
-            </div>
+            </div> -->
         </div>
         <div class="hidden-sidebar">
             <div id="hidden-sidebar-close">
