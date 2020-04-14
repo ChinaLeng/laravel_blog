@@ -36,4 +36,14 @@ class MessageController extends BaseController
 		message::where('id',$id)->update(['status'=>1]);
 		return redirect()->route('admins.message.index')->with('success', '修改成功');
 	}
+	/**
+	 * 删除留言
+	 * @param  [type] $id [description]
+	 * @return [type]     [description]
+	 */
+	public function del($id)
+	{
+		message::where('id',$id)->delete();
+		return redirect()->route('admins.message.index')->with('success', '删除成功');
+	}
 }

@@ -65,6 +65,7 @@
 							@else
 							<a href="{{ route('admins.message.show',$val->id) }}" class="btn btn-default waves-effect waves-light btn-xs m-l-5">显示</a>
 							@endif
+							<a href="{{ route('admins.message.del',$val->id) }}" class="btn btn-danger waves-effect waves-light btn-xs m-l-5">删除</a>
 						</td>
 					</tr>
 					@endforeach

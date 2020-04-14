@@ -74,6 +74,8 @@ Route::namespace('Admin')->prefix('admins')->middleware('auth.login')->group(fun
 		Route::get('/hide/{id}', 'MessageController@hide')->name('admins.message.hide');
 		//留言板显示
 		Route::get('/show/{id}', 'MessageController@show')->name('admins.message.show');
+		//删除留言
+		Route::get('/del/{id}','MessageController@del')->name('admins.message.del');
 	});
 	Route::prefix('friend')->group(function () {
 		//友链列表
