@@ -15,6 +15,8 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->increments('id')->comment('主键id');
+            $table->string('name')->default('')->comment('姓名');
+            $table->string('avatar')->default('')->comment('头像');
             $table->string('ip')->default('')->comment('留言IP');
             $table->string('email')->default('')->comment('邮箱');
             $table->string('url')->default('')->comment('网站');

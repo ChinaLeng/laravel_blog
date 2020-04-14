@@ -67,11 +67,18 @@
                             <div class="single-comment" id="{{ $v['id'] }}_{{ $v['name'] }}">
                                 <div class="vertical-image-text">
                                     <div class="image">
+                                        @if(!empty($v['avatar']))
+                                        <img src="{{ $v['avatar'] }}" alt="author1.jpg" class="img-circle">
+                                        @else
                                         <img src="/index/author1.jpg" alt="author1.jpg" class="img-circle">
+                                        @endif
                                     </div>
                                     <div class="text">
                                         <div class="name-date"><h5>{{ $v['name'] }}</h5><span>{{ $v['created_at'] }}</span></div>
                                         @if($v['status'] == 1)
+                                        @if(!empty($v['url']))
+                                        <p>{!! $v['url'] !!}</p>
+                                        @endif
                                         <p>{!! $v['content'] !!}</p>
                                         @else
                                         <p style="background: #DCDCDC;">评论已被屏蔽</p>

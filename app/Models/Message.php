@@ -10,7 +10,7 @@ class Message extends Model
     private $child = [];
 	protected $table = 'messages';
     protected $fillable = [
-        'name','ip','url','pid','content','status','email'
+        'name','ip','url','pid','content','status','email','avatar'
     ];
     public  function getMessageAll()
     {

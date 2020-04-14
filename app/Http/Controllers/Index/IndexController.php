@@ -134,6 +134,14 @@ class IndexController extends BaseController
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        $api = 'https://api.uomg.com/api/rand.avatar?format=json';//随机获取一张头像
+        // 发送 HTTP Get 请求
+        $response = file_get_contents($api);
+        $response = json_decode($response,true);
+        $avatar = '';
+        if($response['code'] == 1){
+            $avatar = $response['imgurl'];
+        }
         // 存储评论
         $data = [
         	'name'    => $request->input('name'),
@@ -143,6 +151,7 @@ class IndexController extends BaseController
         	'pid'     => $request->input('pid'),
         	'status'  => 1,
         	'ip'      => $request->getClientIp(),
+            'avatar' => $avatar
         ];
         Cache::forever('name', $request->input('name'));
         Cache::forever('email', $request->input('email'));
