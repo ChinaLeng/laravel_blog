@@ -46,6 +46,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if ($this->isHttpException($exception)) {
+            $code = $exception->getStatusCode();
+            $msg = "你遇到了未知的错误";
+            return response()->view('error.error',compact('code','msg'));
+        }
         return parent::render($request, $exception);
     }
 }

@@ -51,7 +51,10 @@ class IndexController extends BaseController
 	 */
 	public function topics($id,Comment $commentModel,Request $request)
 	{
-		$article = Article::with(['articletag','user'])->find($id);
+		$article = Article::with(['articletag','user'])->where('is_release',1)->find($id);
+        if(null == $article){
+            return view('error.error');
+        }
 		$artview = 'article'. $request->ip() . ':' . $id;
 		if (!Cache::has($artview)) {
             cache([$artview => ''], 600);
