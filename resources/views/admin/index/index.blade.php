@@ -118,7 +118,6 @@
 						@foreach($comment_list as $val)
 						<tr>
 							<td>{{ $val->id }}</td>
-<!--  -->
 							<td>{{ $val->content }}</td>
 							<td>{{ $val->user->name }}</td>
 							<td>{{ $val->created_at->diffForHumans() }}</td>

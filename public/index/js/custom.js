@@ -124,7 +124,7 @@ jQuery(document).ready(function () {
 	/*** =====================================
     * Nice Scroll
     * =====================================***/
-	if( $('.hidden-sidebar').length ){
+	/*if( $('.hidden-sidebar').length ){
 		$(".hidden-sidebar").niceScroll({
 		    cursorcolor: "#94c501", // change cursor color in hex
 		    cursoropacitymin: 0, // change opacity when cursor is inactive (scrollabar "hidden" state), range from 1 to 0
@@ -133,7 +133,7 @@ jQuery(document).ready(function () {
 		    cursorborder: "0px solid #fff", // css definition for cursor border
 		    cursorborderradius: "0px", // border radius in pixel for cursor
 		});
-	};
+	};*/
 
 	/** =====================================
 	*  Gallery Post

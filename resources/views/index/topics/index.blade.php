@@ -147,8 +147,9 @@
             var obj=$(this);
             var pid= $(obj).attr('id'),
                 name= $(obj).attr('name');
+                console.log(name);
             $('#content').attr('placeholder','@'+name);
-            $('#pid').attr('pid',pid);
+            $('#pid').val(pid);
         });
     })
 </script>

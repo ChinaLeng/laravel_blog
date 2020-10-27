@@ -8,8 +8,9 @@
 @section('script')
     <script src="/admin/plugins/bootstrap-select/js/bootstrap-select.js"></script>
     <script src="/summernote/dist/summernote.js"></script>
+    <script src="/vendor/markdown/js/jquery.min.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        /*$(document).ready(function() {
           $('#summernote').summernote({
             lang: 'zh-CN',
                 placeholder: '请在此输入内容...',
@@ -43,11 +44,10 @@
                 }
             }
           });
-        });
+        });*/
         $('form').on('submit', function (){
             var count = $("#summernote").summernote("code");
             $('#content').val(count);
-
             return true;
         });
     </script>

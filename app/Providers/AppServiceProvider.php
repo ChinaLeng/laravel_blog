@@ -30,8 +30,8 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         //注册观察者
         \App\Models\Article::observe(\App\Observers\ArticleObserver::class);
-        \App\Models\Comment::observe(\App\Observers\CommentObserver::class);
-        \App\Models\Message::observe(\App\Observers\MessageObserver::class);
+        // \App\Models\Comment::observe(\App\Observers\CommentObserver::class);
+        // \App\Models\Message::observe(\App\Observers\MessageObserver::class);
         /*DB::listen(function ($sql) { 
             Log::info(date('Y-m-d').'--'.$sql->sql.'--'.$this->formatDuration($sql->time / 1000));
             // var_dump($sql->sql, $sql->bindings, $this->formatDuration($sql->time / 1000)); 
