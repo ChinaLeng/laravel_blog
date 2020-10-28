@@ -15,6 +15,7 @@ class AddArticlesTable extends Migration
     {
         Schema::table('articles', function (Blueprint $table) { 
             $table->boolean('is_release')->default(0)->comment('状态 1发布 0草稿');
+            $table->string('image')->default('')->comment('图片');
         });
     }
 
