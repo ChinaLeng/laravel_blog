@@ -4,12 +4,11 @@ namespace App\Handlers;
 
 use GuzzleHttp\Client;
 use Overtrue\Pinyin\Pinyin;
-use Illuminate\Http\Request;
 
 class GetBingImgHandler
 {
 
-	public function translate(Request $request)
+	public function translate()
     {
         // 实例化 HTTP 客户端
         $http = new Client;
@@ -43,7 +42,7 @@ class GetBingImgHandler
         	return $result['data']['url'];
         }else{
         	//默认图片
-        	$url = $request->url();
+        	$url = url()->current();
         	return  $url.'/index/images/default.jpg';
         }
 
