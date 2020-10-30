@@ -13,6 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::group(['prefix' => 'v1', 'namespace' => 'Api', 'as' => 'api.'],function () {
+		//获取文章列表
+		Route::get('/article','ArticleController@index');
+		//获取置顶文章
+		Route::get('/articleTop','ArticleController@indexTop');
+		//获取文章详情
+		Route::get('/show/{id}','ArticleController@show');
+		//文章归档
+		Route::get('/file','ArticleController@file');
+    });
