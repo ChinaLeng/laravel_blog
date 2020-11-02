@@ -16,7 +16,7 @@ class ArticleController extends BaseController
 	public function index(Request $request,ArticleQuery $query)
 	{
 		$article = $query->getSql()->paginate(10);
-		return  $this->response(ArticleResource::collection($article));
+		return  $this->success(ArticleResource::collection($article));
 	}
 	/**
 	 * 获取置顶文章
