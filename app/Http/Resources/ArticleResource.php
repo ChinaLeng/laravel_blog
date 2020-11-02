@@ -11,7 +11,7 @@ class ArticleResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'image' => $this->image,
+            'image' => env('APP_URL', 'http://localhost').$this->image,
             'content' => $this->content,
             'keywords' => $this->keywords,
             'created_at' => Carbon::parse($this->created_at)->diffForHumans(),

@@ -40,7 +40,6 @@ class GetBingImgHandler
         //获取结果
         if(isset($result['status']) && $result['status']['code'] == 200){
         	$imgUrl = $result['data']['url'];
-            $url = url()->current();
             $newUrl = 'index/article/' . time() . '_' . rand(10, 1000) . '.jpg';
             //下载远程图片
             $articlePath = public_path($newUrl);
@@ -50,16 +49,14 @@ class GetBingImgHandler
                 $client->request('GET', $imgUrl, [
                     'sink' => $articlePath,
                 ]);
-                $newUrl = $url . '/' . $newUrl;
             } catch (Exception $e) {
                 //默认图片
-                $newUrl = $url.'/index/images/default.jpg';
+                $newUrl = 'index/images/default.jpg';
             }
             return $newUrl;
         }else{
         	//默认图片
-        	$url = url()->current();
-        	return  $url.'/index/images/default.jpg';
+        	return  'index/images/default.jpg';
         }
 
     }
