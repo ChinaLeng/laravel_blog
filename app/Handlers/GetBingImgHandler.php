@@ -50,7 +50,7 @@ class GetBingImgHandler
                 $client->request('GET', $imgUrl, [
                     'sink' => $articlePath,
                 ]);
-                $newUrl = $newUrl . '/' . $newUrl;
+                $newUrl = $url . '/' . $newUrl;
             } catch (Exception $e) {
                 //默认图片
                 $newUrl = $url.'/index/images/default.jpg';
