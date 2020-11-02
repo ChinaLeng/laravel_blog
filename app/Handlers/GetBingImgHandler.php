@@ -43,7 +43,7 @@ class GetBingImgHandler
             $url = url()->current();
             $newUrl = 'index/article/' . time() . '_' . rand(10, 1000) . '.jpg';
             //下载远程图片
-            $articlePath = storage_path($newUrl);
+            $articlePath = public_path($newUrl);
             try {
                 // 下载最新的头像到本地
                 $client = new Client();
