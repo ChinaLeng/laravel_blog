@@ -39,7 +39,23 @@ class GetBingImgHandler
         **/
         //获取结果
         if(isset($result['status']) && $result['status']['code'] == 200){
-        	return $result['data']['url'];
+        	$imgUrl = $result['data']['url'];
+            $url = url()->current();
+            $newUrl = 'index/article/' . time() . '_' . rand(10, 1000) . '.jpg';
+            //下载远程图片
+            $articlePath = storage_path($newUrl);
+            try {
+                // 下载最新的头像到本地
+                $client = new Client();
+                $client->request('GET', $imgUrl, [
+                    'sink' => $articlePath,
+                ]);
+                $newUrl = $newUrl . '/' . $newUrl;
+            } catch (Exception $e) {
+                //默认图片
+                $newUrl = $url.'/index/images/default.jpg';
+            }
+            return $newUrl;
         }else{
         	//默认图片
         	$url = url()->current();

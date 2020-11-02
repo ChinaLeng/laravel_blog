@@ -17,7 +17,7 @@ class ResponseServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-         Response::macro('horesp', function ($code=200, $data=[], $msg=null) {
+         Response::macro('horesp', function ($code=200, $data=null, $msg=null) {
             $content =  array(
                         'code'    =>  $code,
                         'data'    =>  $data,

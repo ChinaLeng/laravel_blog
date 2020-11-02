@@ -7,12 +7,12 @@ use App\Http\Controllers\Controller;
 
 class BaseController extends Controller
 {
-	public function success($data=[], $msg=null)
+	public function success($data=null, $msg=null)
     {
         return response()->horesp(0, $data, $msg);
     }
 
-    public function error($data=[], $msg=null)
+    public function error($data=null, $msg=null)
     {
         return response()->horesp(1, $data, $msg);
     }
