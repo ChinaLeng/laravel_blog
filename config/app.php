@@ -177,6 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Overtrue\LaravelWechat\ServiceProvider::class,
         SocialiteProviders\Manager\ServiceProvider::class,
+        App\Providers\ResponseServiceProvider::class,
 
     ],
 
