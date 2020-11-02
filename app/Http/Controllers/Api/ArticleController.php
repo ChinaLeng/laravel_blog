@@ -35,7 +35,10 @@ class ArticleController extends BaseController
  		$article = Article::findOrFail($id);
         return new ArticleResource($article);
 	}
-
+	/**
+	 * 获取归档
+	 * @return [type] [description]
+	 */
 	public function file(){
 		$file = Article::getAllArticle();
 		return response()->json(['data'=>$file]);
